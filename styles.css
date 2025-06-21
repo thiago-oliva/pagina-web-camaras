@@ -1,0 +1,34 @@
+/* Estilos generales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 0;
+}
+
+.card {
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Estilos para el formulario de contacto */
+form {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 60px 0;
+    }
+}
