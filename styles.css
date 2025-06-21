@@ -4,14 +4,18 @@ body {
 }
 
 .hero-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/hero-bg.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
     background-size: cover;
     background-position: center;
     padding: 100px 0;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
 }
 
 .card {
     transition: transform 0.3s;
+    margin-bottom: 20px;
 }
 
 .card:hover {
@@ -19,16 +23,46 @@ body {
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
 /* Estilos para el formulario de contacto */
 form {
     background: #f8f9fa;
     padding: 30px;
     border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 /* Estilos responsivos */
 @media (max-width: 768px) {
     .hero-section {
         padding: 60px 0;
+        min-height: 50vh;
     }
+    
+    .card-img-top {
+        height: 150px;
+    }
+}
+
+/* Mejoras visuales adicionales */
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+.navbar {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+footer {
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
 }
