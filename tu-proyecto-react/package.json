@@ -1,5 +1,5 @@
 {
-  "homepage": "https://github.com/thiago-oliva/pagina-web-camaras",
+  "homepage": "https://thiago-oliva.github.io/pagina-web-camaras",
   "name": "tu-proyecto-react",
   "version": "0.1.0",
   "private": true,
@@ -12,6 +12,7 @@
     "bootstrap": "^5.3.7",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-router-dom": "^7.6.2",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },

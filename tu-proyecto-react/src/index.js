@@ -8,6 +8,8 @@ import './styles.css'; // Asegúrate de que tu archivo styles.css esté en src/
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <HashRouter>
+      <App />
+    </HashRouter>
   </React.StrictMode>
 );
