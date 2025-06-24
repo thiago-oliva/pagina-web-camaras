@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'; 
+import React, { useState, useContext } from 'react';
 import { CartContext } from './CartContext';
 import { Modal, Button, Table } from 'react-bootstrap';
 
@@ -11,8 +11,14 @@ const Cart = () => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow} className="position-fixed" style={{ bottom: '20px', right: '20px', zIndex: 1000 }}>
-        <i className="fas fa-shopping-cart"></i> {cart.length > 0 && <span className="badge bg-danger">{cart.length}</span>}
+      <Button 
+        variant="primary" 
+        onClick={handleShow} 
+        className="position-fixed" 
+        style={{ bottom: '20px', right: '20px', zIndex: 1000 }}
+      >
+        <i className="fas fa-shopping-cart"></i>
+        {cart.length > 0 && <span className="badge bg-danger ms-1">{cart.length}</span>}
       </Button>
 
       <Modal show={show} onHide={handleClose} size="lg">
@@ -37,7 +43,11 @@ const Cart = () => {
                     <td>{item.title}</td>
                     <td>{item.price}</td>
                     <td>
-                      <Button variant="danger" size="sm" onClick={() => removeFromCart(item.id)}>
+                      <Button 
+                        variant="danger" 
+                        size="sm" 
+                        onClick={() => removeFromCart(item.id)}
+                      >
                         <i className="fas fa-trash"></i>
                       </Button>
                     </td>

@@ -17,8 +17,8 @@ function App() {
         <Products />
         <AboutUs />
         <Contact />
-        <Cart />
       </main>
+      <Cart />
       <Footer />
     </CartProvider>
   );

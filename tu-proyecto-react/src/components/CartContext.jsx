@@ -1,9 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 
-// 1. Declara el contexto primero (sin exportar aquí)
 const CartContext = createContext();
 
-// 2. Crea el provider
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem('cart');
@@ -38,5 +36,4 @@ const CartProvider = ({ children }) => {
   );
 };
 
-// 3. Exporta ambos en una sola línea al final
 export { CartContext, CartProvider };
