@@ -4,6 +4,39 @@ import ProductCard from './ProductCard';
 import './Products.css';
 
 const Products = () => {
+  // Marcas con las que trabajamos (imágenes de ejemplo)
+  const brands = [
+    {
+      id: 1,
+      name: "Dahua",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Dahua_Technology_logo.svg/1200px-Dahua_Technology_logo.svg.png"
+    },
+    {
+      id: 2,
+      name: "Hikvision",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Hikvision_logo.svg/1200px-Hikvision_logo.svg.png"
+    },
+    {
+      id: 3,
+      name: "TP-Link",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/TP-Link_logo_2016.svg/1200px-TP-Link_logo_2016.svg.png"
+    },
+    {
+      id: 4,
+      name: "Honeywell",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Honeywell_logo.svg/1200px-Honeywell_logo.svg.png"
+    },
+    {
+      id: 5,
+      name: "Bosch",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Bosch-logo.svg/1200px-Bosch-logo.svg.png"
+    },
+    {
+      id: 6,
+      name: "Samsung",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Samsung_Logo.svg/1280px-Samsung_Logo.svg.png"
+    }
+  ];
   // Productos para Kits pre-armados
   const kits = [
     {
@@ -82,7 +115,39 @@ const Products = () => {
     }
   ];
 
-  // Función para crear el efecto de carrusel infinito
+  // Función para renderizar el carrusel de marcas
+  const renderBrandsCarousel = () => (
+    <div className="mb-5">
+      <h2 className="text-center mb-4">Marcas Oficiales</h2>
+      <div className="brands-carousel">
+        <Carousel 
+          interval={3000}
+          indicators={false}
+          controls={false}
+          pause={false}
+        >
+          {[0, 1].map((slideIndex) => (
+            <Carousel.Item key={slideIndex}>
+              <div className="d-flex justify-content-around align-items-center">
+                {brands.slice(slideIndex * 3, slideIndex * 3 + 3).map((brand) => (
+                  <div key={brand.id} className="brand-logo-container">
+                    <img 
+                      src={brand.logo} 
+                      alt={brand.name}
+                      className="brand-logo img-fluid"
+                      title={brand.name}
+                    />
+                  </div>
+                ))}
+              </div>
+            </Carousel.Item>
+          ))}
+        </Carousel>
+      </div>
+    </div>
+  );
+
+  // Función para crear el efecto de carrusel infinito de productos
   const renderCarousel = (products, title) => {
     // Duplicamos los productos para el efecto infinito
     const duplicatedProducts = [...products, ...products];
@@ -115,7 +180,24 @@ const Products = () => {
   return (
     <section id="productos" className="py-5 bg-light">
       <div className="container-fluid px-4">
+        {renderBrandsCarousel()}
         {renderCarousel(kits, "Kits pre-armados (listos para instalar)")}
+        
+        <div className="text-center mt-5 mb-4 p-3 bg-white rounded shadow-sm">
+          <p className="text-muted mb-3">
+            <i className="fas fa-exclamation-triangle text-warning me-2"></i>
+            Los precios mostrados no incluyen IVA. Registrate para acceder a precios especiales y beneficios exclusivos.
+          </p>
+          <div className="d-flex justify-content-center gap-3">
+            <button className="btn btn-outline-primary">
+              <i className="fas fa-sign-in-alt me-2"></i>Ingresar a mi cuenta
+            </button>
+            <button className="btn btn-primary">
+              <i className="fas fa-user-plus me-2"></i>Crear cuenta nueva
+            </button>
+          </div>
+        </div>
+
         {renderCarousel(camarasIndividuales, "Cámaras individuales (listas para instalar)")}
       </div>
     </section>
