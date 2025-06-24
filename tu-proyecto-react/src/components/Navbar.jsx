@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { CartContext } from '../CartContext';
 
 const Navbar = () => {
+  const { cart } = useContext(CartContext);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div className="container">
@@ -14,6 +17,12 @@ const Navbar = () => {
             <li className="nav-item"><a className="nav-link" href="#productos">Productos</a></li>
             <li className="nav-item"><a className="nav-link" href="#nosotros">Nosotros</a></li>
             <li className="nav-item"><a className="nav-link" href="#contacto">Contacto</a></li>
+            <li className="nav-item">
+              <a className="nav-link" href="#carrito">
+                <i className="fas fa-shopping-cart"></i>
+                {cart.length > 0 && <span className="badge bg-danger ms-1">{cart.length}</span>}
+              </a>
+            </li>
           </ul>
         </div>
       </div>
