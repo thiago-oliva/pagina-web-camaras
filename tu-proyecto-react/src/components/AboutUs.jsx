@@ -9,23 +9,35 @@ const AboutUs = () => {
           <Col md={6} className="text-center mb-4 mb-md-0">
             <div className="shadow-lg rounded overflow-hidden" style={{ maxWidth: '450px', margin: '0 auto' }}>
               <img
-                src="https://via.placeholder.com/450x300?text=Logo+Empresa"
-                alt="Logo temporal"
+                src="https://via.placeholder.com/450x300?text=Lococo's+Security"
+                alt="Logo Lococo's Security"
                 className="img-fluid"
                 style={{ width: '100%', height: 'auto' }}
               />
             </div>
           </Col>
           <Col md={6}>
-            <h2 className="mb-4">¿Quiénes somos?</h2>
+            <h2 className="mb-4">Lococo's Security</h2>
             <p className="lead">
-              Somos una empresa que se dedica a la importación y distribución de equipos de seguridad.
+              ¡Somos importadores y distribuidores líderes en equipos de seguridad, dedicados a la venta mayorista y minorista!
             </p>
             
-            <h3 className="mt-5 mb-3">Nuestro objetivo</h3>
+            <h3 className="mt-4 mb-3">Nuestra misión</h3>
             <p>
-              Continuar teniendo siempre el mejor precio del mercado, ofreciendo productos de calidad 
-              y soporte técnico especializado.
+              Ofrecer los mejores precios del mercado con productos de máxima calidad. Ayudamos a empresas y particulares a proteger lo que más valoran, adaptándonos a cada necesidad con soluciones personalizadas.
+            </p>
+
+            <h3 className="mt-4 mb-3">Nuestra trayectoria</h3>
+            <p>
+              Con sede central y 4 depósitos estratégicos, facilitamos la logística a nuestros clientes. Fundada en 2006, hemos crecido manteniendo nuestro compromiso con la excelencia, ganando reconocimiento en el sector de seguridad electrónica.
+            </p>
+
+            <h3 className="mt-4 mb-3">Nuestro diferencial</h3>
+            <p>
+              - Atención personalizada para cada tipo de cliente<br/>
+              - Stock permanente en 5 ubicaciones<br/>
+              - Asesoramiento técnico especializado<br/>
+              - Precios competitivos para mayoristas y minoristas
             </p>
           </Col>
         </Row>
