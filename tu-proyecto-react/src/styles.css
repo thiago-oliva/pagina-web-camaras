@@ -38,15 +38,26 @@ form {
 }
 
 /* Estilos responsivos */
+
 @media (max-width: 768px) {
-    .hero-section {
-        padding: 60px 0;
-        min-height: 50vh;
-    }
-    
-    .card-img-top {
-        height: 150px;
-    }
+  .carousel-item .col-md-4 {
+    flex: 0 0 50%;
+    max-width: 50%; /* Muestra 2 productos en tablets */
+  }
+  .hero-section {
+      padding: 60px 0;
+      min-height: 50vh;
+  }
+  .card-img-top {
+    height: 150px;
+  }
+}
+
+@media (max-width: 576px) {
+  .carousel-item .col-md-4 {
+    flex: 0 0 100%;
+    max-width: 100%; /* Muestra 1 producto en móviles */
+  }
 }
 
 /* Mejoras visuales adicionales */
