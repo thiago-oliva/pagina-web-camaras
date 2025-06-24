@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import logoEmpresa from '../assets/logo-empresa.png'; // Asegúrate de tener esta imagen
 
 const AboutUs = () => {
   return (
@@ -9,10 +8,9 @@ const AboutUs = () => {
         <Row className="align-items-center">
           <Col md={6} className="text-center mb-4 mb-md-0">
             <img 
-              src={logoEmpresa} 
-              alt="Logo de la empresa" 
-              className="img-fluid" 
-              style={{ maxHeight: '300px' }}
+            src={`${process.env.PUBLIC_URL}/assets/logo-empresa.png`}
+            alt="Logo"
+            className="img-fluid"
             />
           </Col>
           <Col md={6}>
