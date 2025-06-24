@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="bg-dark text-white py-4">
       <div className="container text-center">
-        <p>&copy; {new Date().getFullYear()} Tu Marca de Cámaras. Todos los derechos reservados.</p>
+        <p>&copy; 2023 Lococo's. Todos los derechos reservados.</p>
       </div>
     </footer>
   );
