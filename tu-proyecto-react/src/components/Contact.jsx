@@ -32,8 +32,8 @@ const Contact = () => {
             
             <div className="mt-4">
               <h5>Seguinos en redes</h5>
-              <a href="https://www.facebook.com/p/Guxotech-100068367043904/" className="me-3 text-dark" target="_blank"><i className="fab fa-facebook fa-2x"></i></a>
-              <a href="https://www.instagram.com/guxotech/" className="me-3 text-dark" target="_blank"><i className="fab fa-instagram fa-2x"></i></a>
+              <a href="https://www.facebook.com/p/Guxotech-100068367043904/" className="me-3 text-dark" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook fa-2x"></i></a>
+              <a href="https://www.instagram.com/guxotech/" className="me-3 text-dark" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram fa-2x"></i></a>
               <a href="https://wa.me/5491132042963" className="me-3 text-dark" target="_blank" rel="noopener noreferrer"><i className="fab fa-whatsapp fa-2x"></i></a>
             </div>
           </div>
