@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { CartContext } from '../CartContext';
+import { CartContext } from './CartContext';
 import { Modal, Button, Table } from 'react-bootstrap';
 
 const Cart = () => {
