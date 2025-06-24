@@ -96,15 +96,13 @@ const Products = () => {
           wrap={true} 
           pause={false}
         >
-          {Array.from({ length: products.length }).map((_, index) => (
+          {Array.from({ length: Math.ceil(products.length / 3) }).map((_, index) => (
             <Carousel.Item key={`${title}-${index}`}>
-              <div className="row g-3">
+              <div className="row g-3 justify-content-center">
                 {duplicatedProducts
-                  .slice(index, index + 4)
+                  .slice(index, index + (window.innerWidth > 1200 ? 4 : 3))
                   .map((product, idx) => (
-                    <div className="col-xl-3 col-lg-4 col-md-6" key={`${product.id}-${idx}`}>
-                      <ProductCard product={product} />
-                    </div>
+                    <ProductCard key={`${product.id}-${idx}`} product={product} />
                   ))}
               </div>
             </Carousel.Item>
@@ -116,7 +114,7 @@ const Products = () => {
 
   return (
     <section id="productos" className="py-5 bg-light">
-      <div className="container-fluid px-4"> 
+      <div className="container-fluid px-4">
         {renderCarousel(kits, "Kits pre-armados (listos para instalar)")}
         {renderCarousel(camarasIndividuales, "Cámaras individuales (listas para instalar)")}
       </div>
