@@ -1,6 +1,5 @@
 {
-  "homepage": "https://thiago-oliva.github.io/pagina-web-camaras",
-  "name": "tu-proyecto-react",
+  "homepage": "https://thiago-oliva.github.io/pagina-web-camaras",  "name": "tu-proyecto-react",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -21,7 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && gh-pages -d build"
+    "deploy": "gh-pages -d build -b gh-pages -f"
   },
   "eslintConfig": {
     "extends": [
