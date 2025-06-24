@@ -1,5 +1,5 @@
 import React from 'react';
-import { CartProvider } from './CartContext';
+import { CartProvider } from './components/CartContext';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Products from './components/Products';
