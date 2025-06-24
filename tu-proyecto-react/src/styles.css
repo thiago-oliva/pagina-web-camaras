@@ -112,3 +112,9 @@ form {
 .about-us-section {
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
+
+.social-icon:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}

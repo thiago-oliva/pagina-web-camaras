@@ -9,16 +9,16 @@ const Contact = () => {
           <div className="col-md-6">
             <form>
               <div className="mb-3">
-                <input type="text" className="form-control" placeholder="Nombre" />
+                <input type="text" className="form-control" placeholder="Nombre" required />
               </div>
               <div className="mb-3">
-                <input type="email" className="form-control" placeholder="Email" />
+                <input type="email" className="form-control" placeholder="Email" required />
               </div>
               <div className="mb-3">
                 <input type="tel" className="form-control" placeholder="Teléfono" />
               </div>
               <div className="mb-3">
-                <textarea className="form-control" rows="5" placeholder="Mensaje"></textarea>
+                <textarea className="form-control" rows="5" placeholder="Mensaje" required></textarea>
               </div>
               <button type="submit" className="btn btn-primary">Enviar</button>
             </form>
@@ -32,9 +32,33 @@ const Contact = () => {
             
             <div className="mt-4">
               <h5>Seguinos en redes</h5>
-              <a href="https://www.facebook.com/p/Guxotech-100068367043904/" className="me-3 text-dark" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook fa-2x"></i></a>
-              <a href="https://www.instagram.com/guxotech/" className="me-3 text-dark" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram fa-2x"></i></a>
-              <a href="https://wa.me/5491132042963" className="me-3 text-dark" target="_blank" rel="noopener noreferrer"><i className="fab fa-whatsapp fa-2x"></i></a>
+              <a 
+                href="https://www.facebook.com/p/Guxotech-100068367043904/" 
+                className="me-3 text-dark social-icon" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                title="Visítanos en Facebook"
+              >
+                <i className="fab fa-facebook fa-2x"></i>
+              </a>
+              <a 
+                href="https://www.instagram.com/guxotech/" 
+                className="me-3 text-dark social-icon" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                title="Síguenos en Instagram"
+              >
+                <i className="fab fa-instagram fa-2x"></i>
+              </a>
+              <a 
+                href="https://wa.me/5491132042963" 
+                className="me-3 text-dark social-icon" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                title="Contáctanos por WhatsApp"
+              >
+                <i className="fab fa-whatsapp fa-2x"></i>
+              </a>
             </div>
           </div>
         </div>
