@@ -116,7 +116,7 @@ const Products = () => {
 
   return (
     <section id="productos" className="py-5 bg-light">
-      <div className="container">
+      <div className="container-fluid px-4"> 
         {renderCarousel(kits, "Kits pre-armados (listos para instalar)")}
         {renderCarousel(camarasIndividuales, "Cámaras individuales (listas para instalar)")}
       </div>
