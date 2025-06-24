@@ -116,33 +116,23 @@ const Products = () => {
   ];
 
   // Función para renderizar el carrusel de marcas
-  const renderBrandsCarousel = () => (
+  // Nuevo: Carrusel de marcas tipo marquesina
+  const renderBrandsMarquee = () => (
     <div className="mb-5">
       <h2 className="text-center mb-4">Marcas Oficiales</h2>
-      <div className="brands-carousel">
-        <Carousel 
-          interval={3000}
-          indicators={false}
-          controls={false}
-          pause={false}
-        >
-          {[0, 1].map((slideIndex) => (
-            <Carousel.Item key={slideIndex}>
-              <div className="d-flex justify-content-around align-items-center">
-                {brands.slice(slideIndex * 3, slideIndex * 3 + 3).map((brand) => (
-                  <div key={brand.id} className="brand-logo-container">
-                    <img 
-                      src={brand.logo} 
-                      alt={brand.name}
-                      className="brand-logo img-fluid"
-                      title={brand.name}
-                    />
-                  </div>
-                ))}
-              </div>
-            </Carousel.Item>
+      <div className="brands-marquee-wrapper">
+        <div className="brands-marquee">
+          {[...brands, ...brands].map((brand, idx) => (
+            <div key={idx} className="brand-logo-container">
+              <img
+                src={brand.logo}
+                alt={brand.name}
+                className="brand-logo img-fluid"
+                title={brand.name}
+              />
+            </div>
           ))}
-        </Carousel>
+        </div>
       </div>
     </div>
   );
@@ -180,9 +170,10 @@ const Products = () => {
   return (
     <section id="productos" className="py-5 bg-light">
       <div className="container-fluid px-4">
-        {renderBrandsCarousel()}
+        {renderBrandsMarquee()}
         {renderCarousel(kits, "Kits pre-armados (listos para instalar)")}
-        
+        {renderCarousel(camarasIndividuales, "Cámaras individuales (listas para instalar)")}
+        {/* Aviso de IVA ahora abajo de cámaras individuales */}
         <div className="text-center mt-5 mb-4 p-3 bg-white rounded shadow-sm">
           <p className="text-muted mb-3">
             <i className="fas fa-exclamation-triangle text-warning me-2"></i>
@@ -197,8 +188,6 @@ const Products = () => {
             </button>
           </div>
         </div>
-
-        {renderCarousel(camarasIndividuales, "Cámaras individuales (listas para instalar)")}
       </div>
     </section>
   );
