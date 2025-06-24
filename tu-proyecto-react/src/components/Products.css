@@ -1,8 +1,4 @@
 /* Ajustes específicos para el carrusel */
-.carousel-inner {
-  padding: 0 30px; /* Espacio lateral */
-}
-
 .carousel-control-prev, 
 .carousel-control-next {
   width: 5%;
@@ -10,16 +6,20 @@
   border-radius: 50%;
 }
 
-/* Altura mínima para evitar saltos */
-.carousel-item {
-  min-height: 350px;
-  transition: transform 0.6s ease;
+/* Agrega esto para mejorar el efecto infinito */
+.carousel-inner {
+  overflow: visible; /* Permite que las cards se vean durante la transición */
 }
 
-/* Efecto hover para las cards */
+.carousel-item {
+  transition: transform 0.8s ease-in-out; /* Transición más suave */
+}
+
+/* Efecto hover mejorado */
 .card:hover {
-  transform: scale(1.03);
-  z-index: 1;
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
 }
 
 .card {
