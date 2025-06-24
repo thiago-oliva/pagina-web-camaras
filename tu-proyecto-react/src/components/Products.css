@@ -116,3 +116,30 @@
 .login-notice {
   border-left: 4px solid #ffc107;
 }
+
+.brands-marquee-wrapper {
+  overflow: hidden;
+  width: 100%;
+  background: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+}
+
+.brands-marquee {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  animation: marquee 25s linear infinite;
+  width: max-content;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
