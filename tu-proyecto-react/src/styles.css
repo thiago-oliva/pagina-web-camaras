@@ -1,6 +1,7 @@
 /* Estilos generales */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 56px; /* Altura del navbar */
 }
 
 .hero-section {
@@ -59,8 +60,10 @@ form {
     border-color: #0a58ca;
 }
 
+
 .navbar {
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 footer {
