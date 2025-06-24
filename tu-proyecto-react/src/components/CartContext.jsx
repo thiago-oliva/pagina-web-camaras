@@ -1,9 +1,18 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
-export const CartContext = createContext();
+// 1. Declara el contexto primero (sin exportar aquí)
+const CartContext = createContext();
 
-export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+// 2. Crea el provider
+const CartProvider = ({ children }) => {
+  const [cart, setCart] = useState(() => {
+    const savedCart = localStorage.getItem('cart');
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   const addToCart = (product) => {
     setCart([...cart, product]);
@@ -17,7 +26,10 @@ export const CartProvider = ({ children }) => {
     setCart([]);
   };
 
-  const total = cart.reduce((sum, item) => sum + parseFloat(item.price.replace(/[^0-9.]/g, '')), 0);
+  const total = cart.reduce((sum, item) => {
+    const price = parseFloat(item.price.replace(/[^0-9.]/g, ''));
+    return sum + (isNaN(price) ? 0 : price);
+  }, 0);
 
   return (
     <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart, total }}>
@@ -26,4 +38,5 @@ export const CartProvider = ({ children }) => {
   );
 };
 
+// 3. Exporta ambos en una sola línea al final
 export { CartContext, CartProvider };
