@@ -12,6 +12,7 @@ function App() {
       <main>
         <Hero />
         <Products />
+        <AboutUs />
         <Contact />
       </main>
       <Footer />
