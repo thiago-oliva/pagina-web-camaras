@@ -8,8 +8,8 @@ const AboutUs = () => {
         <Row className="align-items-center">
           <Col md={6} className="text-center mb-4 mb-md-0">
             <img 
-            src={`${process.env.PUBLIC_URL}/assets/logo-empresa.png`}
-            alt="Logo"
+            src="https://via.placeholder.com/300x200?text=Logo+Empresa" 
+            alt="Logo temporal"
             className="img-fluid"
             />
           </Col>
@@ -30,3 +30,5 @@ const AboutUs = () => {
     </section>
   );
 };
+
+export default AboutUs;
