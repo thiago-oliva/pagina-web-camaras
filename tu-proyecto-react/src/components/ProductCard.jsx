@@ -1,6 +1,9 @@
 import React from 'react';
+import { CartContext } from '../CartContext';
 
 const ProductCard = ({ product }) => {
+  const { addToCart } = useContext(CartContext);
+
   return (
     <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-4">
       <div className="card h-100">
@@ -27,8 +30,11 @@ const ProductCard = ({ product }) => {
           <p className="h4 text-primary fw-bold mt-auto">{product.price}</p>
         </div>
         <div className="card-footer bg-white border-0">
-          <button className="btn btn-primary w-100 py-2">
-            <i className="fas fa-shopping-cart me-2"></i>Consultar
+          <button 
+            className="btn btn-primary w-100 py-2" 
+            onClick={() => addToCart(product)}
+          >
+            <i className="fas fa-shopping-cart me-2"></i>Agregar al carrito
           </button>
         </div>
       </div>
