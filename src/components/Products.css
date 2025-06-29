@@ -81,46 +81,16 @@
   }
 }
 
-/* Estilos para el carrusel de marcas */
-.brands-carousel {
-  background-color: #f8f9fa;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.brand-logo-container {
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 2rem;
-}
-
-.brand-logo {
-  max-height: 80px;
-  max-width: 180px;
-  object-fit: contain;
-  filter: grayscale(30%);
-  opacity: 0.8;
-  transition: all 0.3s ease;
-}
-
-.brand-logo:hover {
-  filter: grayscale(0%);
-  opacity: 1;
-  transform: scale(1.05);
-}
-
 /* Estilos para la sección de registro */
 .login-notice {
   border-left: 4px solid #ffc107;
 }
 
+/* Estilos para el marquesina de marcas */
 .brands-marquee-wrapper {
   overflow: hidden;
   width: 100%;
-  background: #f8f9fa;
+  background: linear-gradient(90deg, #f8f9fa 0%, #ffffff 50%, #f8f9fa 100%);
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   padding: 2rem 0;
@@ -130,51 +100,31 @@
 .brands-marquee {
   display: flex;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
   animation: marquee 25s linear infinite;
   width: max-content;
+  padding: 1rem 0;
 }
 
 @keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
+/* Contenedor de logos (sin rebordes) */
 .brand-logo-container {
-  height: 120px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 1.5rem;
 }
 
-.brand-logo-wrapper {
-  width: 200px;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 15px rgba(0,0,0,0.08);
-  padding: 15px;
-  transition: all 0.3s ease;
-}
-
-.brand-logo-wrapper:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 20px rgba(0,0,0,0.12);
-}
-
+/* Estilos para los logos */
 .brand-logo {
-  max-height: 70px;
-  max-width: 160px;
+  height: 50px;
   width: auto;
-  height: auto;
+  max-width: 150px;
   object-fit: contain;
   filter: grayscale(30%);
   opacity: 0.9;
@@ -187,32 +137,15 @@
   transform: scale(1.05);
 }
 
-/* Ajustes para marquesina */
-.brands-marquee-wrapper {
-  background: linear-gradient(90deg, #f8f9fa 0%, #ffffff 50%, #f8f9fa 100%);
-}
-
-.brands-marquee {
-  gap: 1.5rem;
-  padding: 1rem 0;
-}
-
-/* Efecto de carga mejorado */
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
 /* Estilos responsivos */
 @media (max-width: 768px) {
-  .brand-logo-wrapper {
-    width: 160px;
-    height: 80px;
-    padding: 10px;
+  .brand-logo-container {
+    height: 70px;
+    padding: 0 1rem;
   }
   
   .brand-logo {
-    max-height: 50px;
+    height: 40px;
     max-width: 120px;
   }
   
