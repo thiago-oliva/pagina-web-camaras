@@ -99,3 +99,26 @@
     display: none; /* Oculta tooltip en móviles pequeños */
   }
 }
+
+.whatsapp-float {
+  /* ... otros estilos ... */
+  overflow: hidden; /* Oculta cualquier contenido que sobresalga */
+}
+
+.whatsapp-icon {
+  font-size: 30px;
+  line-height: 1; /* Asegura que no haya espacio vertical extra */
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  top: 1px; /* Ajuste fino de posición si es necesario */
+}
+
+/* Versión alternativa usando SVG */
+.whatsapp-float svg {
+  width: 30px;
+  height: 30px;
+  display: block;
+  margin: 0 auto;
+  fill: white;
+}
