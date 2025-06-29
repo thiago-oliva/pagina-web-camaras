@@ -133,18 +133,17 @@ const Products = () => {
       <div className="brands-marquee-wrapper">
         <div className="brands-marquee">
           {[...brands, ...brands].map((brand, idx) => (
+            // En la función renderBrandsMarquee, cambia el contenedor a:
             <div key={`${brand.id}-${idx}`} className="brand-logo-container">
-              <div className="brand-logo-wrapper">
-                <img
-                  src={brand.logo}
-                  alt={brand.name}
-                  className="brand-logo"
-                  onError={(e) => {
-                    e.target.src = process.env.PUBLIC_URL + '/assets/placeholder-logo.png';
-                    e.target.style.width = '120px';
-                  }}
-                />
-              </div>
+              <img
+                src={brand.logo}
+                alt={brand.name}
+                className="brand-logo"
+                onError={(e) => {
+                  e.target.src = process.env.PUBLIC_URL + '/assets/placeholder-logo.png';
+                  e.target.style.width = '120px';
+                }}
+              />
             </div>
           ))}
         </div>
