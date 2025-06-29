@@ -118,3 +118,59 @@ form {
   transform: scale(1.1);
   transition: all 0.3s ease;
 }
+
+/* Responsive General */
+@media (max-width: 992px) { /* Tablets */
+  .hero-section {
+    padding: 80px 0;
+    min-height: 50vh;
+  }
+  
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+  
+  .display-4 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) { /* Tablets pequeñas */
+  .hero-section {
+    padding: 60px 0;
+    min-height: 40vh;
+  }
+  
+  .display-4 {
+    font-size: 2rem;
+  }
+  
+  .lead {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) { /* Móviles */
+  body {
+    padding-top: 52px; /* Navbar más compacto */
+  }
+  
+  .hero-section {
+    padding: 40px 0;
+    min-height: 35vh;
+  }
+  
+  .display-4 {
+    font-size: 1.8rem;
+  }
+  
+  .btn-lg {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+  
+  /* Ajustes para secciones */
+  section.py-5 {
+    padding: 2rem 0 !important;
+  }
+}

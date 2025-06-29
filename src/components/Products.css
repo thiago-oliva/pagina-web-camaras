@@ -153,3 +153,70 @@
     gap: 1rem;
   }
 }
+
+/* Products.css - Añade al final */
+
+@media (max-width: 1200px) {
+  .brand-logo {
+    max-height: 50px;
+    max-width: 120px;
+  }
+}
+
+@media (max-width: 992px) {
+  .brand-logo-container {
+    height: 70px;
+    padding: 0 1rem;
+  }
+  
+  .card {
+    min-height: 350px;
+  }
+  
+  .card-img-top {
+    height: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .brands-marquee {
+    gap: 1.5rem;
+  }
+  
+  .card {
+    min-height: 320px;
+    margin-bottom: 15px;
+  }
+  
+  .card-img-top {
+    height: 150px;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .brand-logo {
+    max-height: 40px;
+    max-width: 100px;
+  }
+  
+  .brand-logo-container {
+    height: 60px;
+    padding: 0 0.5rem;
+  }
+  
+  .card {
+    min-height: 300px;
+  }
+  
+  .card-img-top {
+    height: 120px;
+  }
+  
+  h2.text-center {
+    font-size: 1.5rem;
+  }
+}

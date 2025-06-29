@@ -5,7 +5,7 @@ const ProductCard = ({ product }) => {
   const { addToCart } = useContext(CartContext);
 
   return (
-    <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-4">
+    <div className="col-xxl-3 col-xl-4 col-lg-6 col-md-6 col-sm-6 mb-4">
       <div className="card h-100">
         <div className="position-relative overflow-hidden" style={{ height: "200px" }}>
           <img 
