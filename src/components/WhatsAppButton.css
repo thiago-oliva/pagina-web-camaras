@@ -1,13 +1,9 @@
 /* WhatsAppButton.css */
 .whatsapp-container {
   position: fixed;
-  bottom: 20px;
+  bottom: 90px; /* Cambiado de 20px a 90px para posicionar arriba del carrito */
   right: 20px;
   z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 15px;
 }
 
 .whatsapp-float {
@@ -23,6 +19,7 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   cursor: pointer;
   transition: all 0.3s ease;
+  position: relative; /* Añadido para el tooltip */
 }
 
 .whatsapp-icon {
@@ -36,27 +33,22 @@
 }
 
 .whatsapp-tooltip {
+  position: absolute;
+  right: 70px;
+  top: 50%;
+  transform: translateY(-50%);
   background: white;
   padding: 8px 12px;
   border-radius: 20px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   font-size: 14px;
-  opacity: 0;
-  transform: translateX(10px);
-  transition: all 0.3s ease;
-  position: absolute;
-  right: 70px;
   white-space: nowrap;
+  opacity: 0;
+  transition: all 0.3s ease;
 }
 
-.whatsapp-container:hover .whatsapp-tooltip {
+.whatsapp-float:hover .whatsapp-tooltip {
   opacity: 1;
-  transform: translateX(0);
-}
-
-/* Ajuste para no superponer con carrito */
-.cart-button-container {
-  bottom: 90px !important;
 }
 
 /* Responsive */

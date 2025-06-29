@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { CartContext } from './CartContext';
 import { Modal, Button, Table } from 'react-bootstrap';
+import './Cart.css'; 
 
 const Cart = () => {
   const { cart, removeFromCart, clearCart, total } = useContext(CartContext);
@@ -14,11 +15,14 @@ const Cart = () => {
       <Button 
         variant="primary" 
         onClick={handleShow} 
-        className="position-fixed" 
-        style={{ bottom: '20px', right: '20px', zIndex: 1000 }}
+        className="cart-button" 
       >
         <i className="fas fa-shopping-cart"></i>
-        {cart.length > 0 && <span className="badge bg-danger ms-1">{cart.length}</span>}
+        {cart.length > 0 && (
+          <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            {cart.length}
+          </span>
+        )}
       </Button>
 
       <Modal show={show} onHide={handleClose} size="lg">
