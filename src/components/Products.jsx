@@ -24,7 +24,7 @@ const Products = () => {
     {
       id: 4,
       name: "Cygnus",
-      logo: process.env.PUBLIC_URL +  "/assets/cygnus.svg"
+      logo: process.env.PUBLIC_URL +  "/assets/logo_cygnus.png"
     },
     {
       id: 5,
@@ -34,7 +34,7 @@ const Products = () => {
     {
       id: 6,
       name: "DSC",
-      logo: process.env.PUBLIC_URL +  "/assets/dsc-1.svg"
+      logo: process.env.PUBLIC_URL +  "/assets/dsc.png"
     },
     {
       id: 7,
