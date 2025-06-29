@@ -4,37 +4,47 @@ import ProductCard from './ProductCard';
 import './Products.css';
 
 const Products = () => {
-  // Marcas con las que trabajamos (imágenes de ejemplo)
+  // Marcas con las que trabajamos
   const brands = [
     {
       id: 1,
       name: "Dahua",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Dahua_Technology_logo.svg/1200px-Dahua_Technology_logo.svg.png"
+      logo: "/assets/Dahua_Technology_logo.svg.png"
     },
     {
       id: 2,
       name: "Hikvision",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Hikvision_logo.svg/1200px-Hikvision_logo.svg.png"
+      logo: "/assets/hikvision-logo.svg"
     },
     {
       id: 3,
-      name: "TP-Link",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/TP-Link_logo_2016.svg/1200px-TP-Link_logo_2016.svg.png"
+      name: "Tiandy",
+      logo: "/assets/tiandy.png"
     },
     {
       id: 4,
-      name: "Honeywell",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Honeywell_logo.svg/1200px-Honeywell_logo.svg.png"
+      name: "Cygnus",
+      logo: "/assets/cygnus.svg"
     },
     {
       id: 5,
-      name: "Bosch",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Bosch-logo.svg/1200px-Bosch-logo.svg.png"
+      name: "Imou",
+      logo: "/assets/imou-seeklogo.png"
     },
     {
       id: 6,
+      name: "DSC",
+      logo: "/assets/dsc-1.svg"
+    },
+    {
+      id: 7,
+      name: "Intelbras",
+      logo: "/assets/intelbras-seeklogo.png"
+    },
+    {
+      id: 8,
       name: "Samsung",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Samsung_Logo.svg/1280px-Samsung_Logo.svg.png"
+      logo: "/assets/Samsung_Logo.svg.png"
     }
   ];
   // Productos para Kits pre-armados
@@ -119,11 +129,11 @@ const Products = () => {
   // Nuevo: Carrusel de marcas tipo marquesina
   const renderBrandsMarquee = () => (
     <div className="mb-5">
-      <h2 className="text-center mb-4">Marcas Oficiales</h2>
+      <h2 className="text-center mb-4">Marcas con las que trabajamos</h2>
       <div className="brands-marquee-wrapper">
         <div className="brands-marquee">
           {[...brands, ...brands].map((brand, idx) => (
-            <div key={idx} className="brand-logo-container">
+            <div key={`${brand.id}-${idx}`} className="brand-logo-container">
               <img
                 src={brand.logo}
                 alt={brand.name}
