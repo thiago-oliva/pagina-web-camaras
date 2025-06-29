@@ -9,42 +9,42 @@ const Products = () => {
     {
       id: 1,
       name: "Dahua",
-      logo: "/assets/Dahua_Technology_logo.svg.png"
+      logo: process.env.PUBLIC_URL +  "/assets/Dahua_Technology_logo.svg.png"
     },
     {
       id: 2,
       name: "Hikvision",
-      logo: "/assets/hikvision-logo.svg"
+      logo: process.env.PUBLIC_URL +  "/assets/hikvision-logo.svg"
     },
     {
       id: 3,
       name: "Tiandy",
-      logo: "/assets/tiandy.png"
+      logo: process.env.PUBLIC_URL +  "/assets/tiandy.png"
     },
     {
       id: 4,
       name: "Cygnus",
-      logo: "/assets/cygnus.svg"
+      logo: process.env.PUBLIC_URL +  "/assets/cygnus.svg"
     },
     {
       id: 5,
       name: "Imou",
-      logo: "/assets/imou-seeklogo.png"
+      logo: process.env.PUBLIC_URL +  "/assets/imou-seeklogo.png"
     },
     {
       id: 6,
       name: "DSC",
-      logo: "/assets/dsc-1.svg"
+      logo: process.env.PUBLIC_URL +  "/assets/dsc-1.svg"
     },
     {
       id: 7,
       name: "Intelbras",
-      logo: "/assets/intelbras-seeklogo.png"
+      logo: process.env.PUBLIC_URL +  "/assets/intelbras-seeklogo.png"
     },
     {
       id: 8,
       name: "Samsung",
-      logo: "/assets/Samsung_Logo.svg.png"
+      logo: process.env.PUBLIC_URL +  "/assets/Samsung_Logo.svg.png"
     }
   ];
   // Productos para Kits pre-armados
