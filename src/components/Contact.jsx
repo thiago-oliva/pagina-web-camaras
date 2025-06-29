@@ -57,11 +57,15 @@ const Contact = () => {
                 <h5>Horario de atención</h5>
                 <p className="mb-2">
                   <i className="far fa-clock text-primary me-2"></i>
-                  Lunes a Viernes: 9:00 - 18:00 hs
+                  Lunes a Viernes: 10:00 - 13:00 hs y 14:00 - 18:00 hs
+                </p>
+                <p className="mb-2">
+                  <i className="far fa-clock text-primary me-2"></i>
+                  Sábados: 10:00 - 13:00 hs
                 </p>
                 <p>
                   <i className="fas fa-envelope text-primary me-2"></i>
-                  Email: info@lococosecurity.com
+                  Email: guxotech@gmail.com
                 </p>
               </div>
 
