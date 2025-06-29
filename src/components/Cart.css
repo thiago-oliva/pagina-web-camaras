@@ -19,3 +19,24 @@
     height: 50px;
   }
 }
+
+/* Cart.css - Modifica */
+.cart-button {
+  /* ... mantén los estilos existentes ... */
+  display: none; /* Oculta inicialmente */
+}
+
+@media (max-width: 992px) {
+  .cart-button {
+    display: flex; /* Muestra solo en mobile/tablet */
+    width: 50px;
+    height: 50px;
+    bottom: 15px;
+    right: 15px;
+  }
+  
+  .modal-dialog {
+    margin: 1rem auto;
+    max-width: 95%;
+  }
+}

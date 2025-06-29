@@ -67,3 +67,35 @@
     right: 60px;
   }
 }
+
+/* WhatsAppButton.css - Modifica */
+@media (max-width: 992px) {
+  .whatsapp-container {
+    bottom: 75px; /* Ajusta posición relativa al carrito */
+    right: 15px;
+  }
+  
+  .whatsapp-float {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .whatsapp-icon {
+    font-size: 25px;
+  }
+  
+  .whatsapp-tooltip {
+    right: 60px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .whatsapp-container {
+    bottom: 70px;
+  }
+  
+  .whatsapp-tooltip {
+    display: none; /* Oculta tooltip en móviles pequeños */
+  }
+}

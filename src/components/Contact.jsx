@@ -6,7 +6,7 @@ const Contact = () => {
       <div className="container">
         <h2 className="text-center mb-5">Contacto y Ubicación</h2>
         <div className="row">
-          <div className="col-md-6 mb-4 mb-md-0">
+          <div className="col-md-6 mb-4 order-md-1 order-2"> {/* Mapa abajo en mobile */}
             <div className="embed-responsive embed-responsive-16by9">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.220144724576!2d-58.47090792422799!3d-34.59898037295632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb60bcf3d7c9d%3A0x1f8b0c8e6d5f5b5e!2sAlejandro%20Magari%C3%B1os%20Cervantes%201928%2C%20C1416DYN%20CABA!5e0!3m2!1ses-419!2sar!4v1620000000000!5m2!1ses-419!2sar"
@@ -20,7 +20,7 @@ const Contact = () => {
               ></iframe>
             </div>
           </div>
-          <div className="col-md-6">
+          <div className="col-md-6 order-md-2 order-1"> {/* Info contacto arriba */}
             <div className="bg-light p-4 rounded shadow">
               <h4 className="mb-4">Información de contacto</h4>
               

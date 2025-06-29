@@ -25,8 +25,11 @@ const Navbar = () => {
             <li className="nav-item">
               <a className="nav-link" href="#contacto">Contacto</a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
+            <li className="nav-item d-lg-none"> {/* Visible solo en mobile */}
+              <a className="nav-link" href="#" onClick={(e) => {
+                e.preventDefault();
+                document.querySelector('.cart-button').click();
+              }}>
                 <i className="fas fa-shopping-cart"></i>
                 {cart.length > 0 && (
                   <span className="badge bg-danger ms-1">{cart.length}</span>
