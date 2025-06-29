@@ -9,7 +9,7 @@ const AboutUs = () => {
           <Col md={6} className="text-center mb-4 mb-md-0">
             <div className="shadow-lg rounded overflow-hidden" style={{ maxWidth: '450px', margin: '0 auto' }}>
               <img
-                src="/assets/lococos-logo.png"
+                src="./assets/lococos-logo.png"
                 alt="Logo Lococo's"
                 className="img-fluid"
                 style={{ width: '100%', height: 'auto' }}
