@@ -7,7 +7,7 @@ import AboutUs from './components/AboutUs';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Cart from './components/Cart';
-import WhatsAppButton from './components/WhatsAppButton'; 
+import WhatsAppButton from './components/WhatsAppButton';
 
 function App() {
   return (
