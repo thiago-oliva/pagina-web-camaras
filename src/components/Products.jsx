@@ -134,12 +134,17 @@ const Products = () => {
         <div className="brands-marquee">
           {[...brands, ...brands].map((brand, idx) => (
             <div key={`${brand.id}-${idx}`} className="brand-logo-container">
-              <img
-                src={brand.logo}
-                alt={brand.name}
-                className="brand-logo img-fluid"
-                title={brand.name}
-              />
+              <div className="brand-logo-wrapper">
+                <img
+                  src={brand.logo}
+                  alt={brand.name}
+                  className="brand-logo"
+                  onError={(e) => {
+                    e.target.src = process.env.PUBLIC_URL + '/assets/placeholder-logo.png';
+                    e.target.style.width = '120px';
+                  }}
+                />
+              </div>
             </div>
           ))}
         </div>
@@ -183,7 +188,7 @@ const Products = () => {
         {renderBrandsMarquee()}
         {renderCarousel(kits, "Kits pre-armados (listos para instalar)")}
         {renderCarousel(camarasIndividuales, "Cámaras individuales (listas para instalar)")}
-        {/* Aviso de IVA ahora abajo de cámaras individuales */}
+        {/* Aviso de IVA */}
         <div className="text-center mt-5 mb-4 p-3 bg-white rounded shadow-sm">
           <p className="text-muted mb-3">
             <i className="fas fa-exclamation-triangle text-warning me-2"></i>
