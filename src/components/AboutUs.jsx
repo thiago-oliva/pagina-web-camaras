@@ -9,15 +9,15 @@ const AboutUs = () => {
           <Col md={6} className="text-center mb-4 mb-md-0">
             <div className="shadow-lg rounded overflow-hidden" style={{ maxWidth: '450px', margin: '0 auto' }}>
               <img
-                src="https://via.placeholder.com/450x300?text=Lococo's+Security"
-                alt="Logo Lococo's Security"
+                src="/assets/lococos-logo.png"
+                alt="Logo Lococo's"
                 className="img-fluid"
                 style={{ width: '100%', height: 'auto' }}
               />
             </div>
           </Col>
           <Col md={6}>
-            <h2 className="mb-4">Lococo's Security</h2>
+            <h2 className="mb-4">Lococo's</h2>
             <p className="lead">
               ¡Somos importadores y distribuidores líderes en equipos de seguridad, dedicados a la venta mayorista y minorista!
             </p>
