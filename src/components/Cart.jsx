@@ -4,7 +4,7 @@ import { Modal, Button, Table } from 'react-bootstrap';
 import './Cart.css';
 
 const Cart = () => {
-  const { cart, removeFromCart, clearCart, total } = useContext(CartContext);
+  const { cart, addToCart, removeFromCart, clearCart, total } = useContext(CartContext);
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -67,12 +67,7 @@ const Cart = () => {
                       <Button 
                         variant="success" 
                         size="sm" 
-                        onClick={() => {
-                          // Simulamos agregar otro item igual
-                          const productToAdd = {...item, quantity: 1};
-                          removeFromCart(item.id); // Primero lo eliminamos
-                          addToCart(productToAdd); // Luego lo agregamos de nuevo
-                        }}
+                        onClick={() => addToCart({...item, quantity: 1})}
                       >
                         <i className="fas fa-plus"></i>
                       </Button>
