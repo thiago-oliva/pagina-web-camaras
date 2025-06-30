@@ -6,7 +6,7 @@ const AboutUs = () => {
     <section id="nosotros" className="py-5">
       <Container fluid="lg">
         <Row className="align-items-center">
-         <Col md={6} className="order-md-2 order-1 mb-4 mb-md-0"> {/* Imagen arriba en mobile */}
+          <Col md={6} className="order-md-1 order-2"> {/* Cambia orden en mobile */}
             <div className="shadow-lg rounded overflow-hidden" style={{ maxWidth: '450px', margin: '0 auto' }}>
               <img
                 src={process.env.PUBLIC_URL + "/assets/lococos-logo.jpg"}                
@@ -16,7 +16,7 @@ const AboutUs = () => {
               />
             </div>
           </Col>
-          <Col md={6} className="order-md-1 order-2"> {/* Cambia orden en mobile */}
+          <Col md={6} className="order-md-2 order-1 mb-4 mb-md-0"> {/* Imagen arriba en mobile */}
             <h2 className="mb-4">Lococo's</h2>
             <p className="lead">
               ¡Somos importadores y distribuidores líderes en equipos de seguridad, dedicados a la venta mayorista y minorista!
