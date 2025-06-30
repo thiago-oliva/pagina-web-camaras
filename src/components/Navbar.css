@@ -1,0 +1,134 @@
+/* Navbar.css */
+.navbar {
+  box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+  padding: 0.8rem 1rem;
+  background-color: #1a1a2e !important;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #fff !important;
+}
+
+.nav-link {
+  font-weight: 500;
+  padding: 0.5rem 1rem !important;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #4cc9f0 !important;
+}
+
+.user-toggle {
+  background: transparent !important;
+  border: none;
+  padding: 0.25rem 0.5rem;
+}
+
+.user-toggle::after {
+  display: none;
+}
+
+.user-toggle:hover, .cart-icon:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
+.dropdown-menu {
+  border: none;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+.dropdown-item {
+  padding: 0.5rem 1.5rem;
+  transition: all 0.2s;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: #1a1a2e;
+}
+
+.cart-icon {
+  color: white;
+  padding: 0.25rem 0.5rem;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Versión mobile */
+.mobile-actions {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.user-mobile, .cart-mobile {
+  color: white;
+  font-size: 1.25rem;
+  position: relative;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ff4757;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+/* Efectos hover */
+.user-toggle:hover, .cart-icon:hover,
+.user-mobile:hover, .cart-mobile:hover {
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .navbar-collapse {
+    background-color: #1a1a2e;
+    padding: 1rem;
+    border-radius: 0 0 10px 10px;
+    margin-top: 0.5rem;
+  }
+  
+  .dropdown-menu {
+    background-color: #16213e;
+  }
+  
+  .dropdown-item {
+    color: #fff;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #0f3460;
+    color: #fff;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-brand {
+    font-size: 1.3rem;
+  }
+  
+  .mobile-actions {
+    font-size: 1.1rem;
+  }
+  
+  .cart-badge {
+    width: 18px;
+    height: 18px;
+    font-size: 0.6rem;
+  }
+}
