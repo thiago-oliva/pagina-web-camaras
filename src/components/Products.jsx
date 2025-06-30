@@ -166,10 +166,15 @@ const Products = () => {
           pause={false}
         >
           {Array.from({ length: Math.ceil(products.length / 3) }).map((_, index) => (
+            // En la función renderCarousel de Products.jsx
             <Carousel.Item key={`${title}-${index}`}>
               <div className="row g-3 justify-content-center">
                 {duplicatedProducts
-                  .slice(index, index + (window.innerWidth > 1200 ? 4 : 3))
+                  .slice(index, index + (
+                    window.innerWidth > 1200 ? 4 : 
+                    window.innerWidth > 768 ? 3 : 
+                    window.innerWidth > 576 ? 2 : 1
+                  ))
                   .map((product, idx) => (
                     <ProductCard key={`${product.id}-${idx}`} product={product} />
                   ))}
