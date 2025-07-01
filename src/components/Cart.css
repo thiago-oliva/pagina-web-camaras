@@ -20,6 +20,11 @@
   justify-content: space-between;
 }
 
+/* Asegurar que el botón flotante no interfiera con WhatsApp */
+.whatsapp-container {
+  bottom: 90px !important;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .cart-button {
@@ -27,18 +32,8 @@
     height: 50px;
   }
   
-  .modal-dialog {
-    margin: 0.5rem auto;
-    max-width: 95%;
-  }
-  
-  .table-responsive {
-    font-size: 14px;
-  }
-  
-  .btn-sm {
-    padding: 0.25rem 0.5rem;
-    font-size: 12px;
+  .whatsapp-container {
+    bottom: 80px !important;
   }
 }
 
@@ -50,11 +45,7 @@
     right: 15px;
   }
   
-  .modal-body {
-    padding: 0.5rem;
-  }
-  
-  .table td, .table th {
-    padding: 0.5rem;
+  .whatsapp-container {
+    bottom: 70px !important;
   }
 }

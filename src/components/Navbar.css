@@ -132,3 +132,13 @@
     font-size: 0.6rem;
   }
 }
+
+.cart-icon, .cart-mobile {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cart-icon:hover, .cart-mobile:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}

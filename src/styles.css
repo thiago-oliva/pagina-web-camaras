@@ -174,3 +174,19 @@ form {
     padding: 2rem 0 !important;
   }
 }
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Ajustes para los enlaces de sección */
+section {
+  scroll-margin-top: 70px; /* Ajusta según la altura de tu navbar */
+}
