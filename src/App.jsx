@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { CartProvider } from './components/CartContext';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -10,11 +10,9 @@ import WhatsAppButton from './components/WhatsAppButton';
 import Cart from './components/Cart';
 
 function App() {
-  const [showCart, setShowCart] = useState(false);
-
   return (
     <CartProvider>
-      <Navbar setShowCart={setShowCart} />
+      <Navbar />
       <main>
         <Hero />
         <Products />
@@ -22,7 +20,7 @@ function App() {
         <Contact />
       </main>
       <WhatsAppButton />
-      <Cart show={showCart} onHide={() => setShowCart(false)} />
+      <Cart />
       <Footer />
     </CartProvider>
   );

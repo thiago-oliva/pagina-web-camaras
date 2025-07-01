@@ -4,7 +4,7 @@ import { Dropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
-const Navbar = ({ setShowCart }) => {
+const Navbar = () => {
   const { cart } = useContext(CartContext);
 
   const scrollToTop = () => {
@@ -52,25 +52,20 @@ const Navbar = ({ setShowCart }) => {
                 <Dropdown.Item as={Link} to="/register">
                   <i className="fas fa-user-plus me-2"></i>Registrarse
                 </Dropdown.Item>
-                <Dropdown.Divider />
-                <Dropdown.Item as={Link} to="/mi-cuenta">
-                  <i className="fas fa-cog me-2"></i>Mi Cuenta
-                </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
 
-            <div 
-              className="position-relative cart-icon" 
-              onClick={() => setShowCart(true)}
-              style={{ cursor: 'pointer' }}
-            >
+            <Link to="#" className="position-relative cart-icon" onClick={(e) => {
+              e.preventDefault();
+              document.querySelector('.cart-button').click();
+            }}>
               <i className="fas fa-shopping-cart fa-lg"></i>
               {cart.length > 0 && (
                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                   {cart.reduce((sum, item) => sum + item.quantity, 0)}
                 </span>
               )}
-            </div>
+            </Link>
           </div>
         </div>
 
@@ -78,16 +73,15 @@ const Navbar = ({ setShowCart }) => {
           <Link to="/login" className="user-mobile me-3">
             <i className="fas fa-user"></i>
           </Link>
-          <div 
-            className="cart-mobile" 
-            onClick={() => setShowCart(true)}
-            style={{ cursor: 'pointer' }}
-          >
+          <Link to="#" className="cart-mobile" onClick={(e) => {
+            e.preventDefault();
+            document.querySelector('.cart-button').click();
+          }}>
             <i className="fas fa-shopping-cart"></i>
             {cart.length > 0 && (
               <span className="cart-badge">{cart.reduce((sum, item) => sum + item.quantity, 0)}</span>
             )}
-          </div>
+          </Link>
         </div>
       </div>
     </nav>
