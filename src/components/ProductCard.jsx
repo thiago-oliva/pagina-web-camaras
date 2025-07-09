@@ -1,43 +1,43 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { CartContext } from './CartContext';
+import './CartAnimation.css';
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useContext(CartContext);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [showNotification, setShowNotification] = useState(false);
+
+  const handleAddToCart = () => {
+    addToCart(product);
+    setIsAnimating(true);
+    setShowNotification(true);
+    
+    setTimeout(() => {
+      setIsAnimating(false);
+    }, 800);
+    
+    setTimeout(() => {
+      setShowNotification(false);
+    }, 2000);
+  };
 
   return (
     <div className="col-xxl-3 col-xl-4 col-lg-6 col-md-6 col-sm-6 mb-4">
-      <div className="card h-100">
-        <div className="position-relative overflow-hidden" style={{ height: "200px" }}>
-          <img 
-            src={product.image} 
-            className="card-img-top w-100 h-100" 
-            alt={product.title}
-            style={{ objectFit: 'cover' }}
-          />
-          <div className="position-absolute bottom-0 start-0 end-0 p-2" 
-               style={{ 
-                 background: 'linear-gradient(to top, rgba(0,0,0,0.7), transparent)'
-               }}>
-            <h5 className="text-white mb-0">{product.title}</h5>
-          </div>
-        </div>
-        <div className="card-body d-flex flex-column">
-          <div className="mb-2">
-            {product.description.split('+').map((item, index) => (
-              <p key={index} className="mb-1">+ {item.trim()}</p>
-            ))}
-          </div>
-          <p className="h4 text-primary fw-bold mt-auto">{product.price}</p>
-        </div>
-        <div className="card-footer bg-white border-0">
-          <button 
-            className="btn btn-primary w-100 py-2" 
-            onClick={() => addToCart(product)}
-          >
-            <i className="fas fa-shopping-cart me-2"></i>Agregar al carrito
-          </button>
-        </div>
+      <div className={`card h-100 ${isAnimating ? 'cart-add-animation' : ''}`}>
+        {/* ... resto del código ... */}
+        <button 
+          className="btn btn-primary w-100 py-2" 
+          onClick={handleAddToCart}
+        >
+          <i className="fas fa-shopping-cart me-2"></i>Agregar al carrito
+        </button>
       </div>
+      
+      {showNotification && (
+        <div className="cart-notification show">
+          ¡Producto agregado al carrito!
+        </div>
+      )}
     </div>
   );
 };
