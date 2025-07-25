@@ -203,3 +203,33 @@ section {
     display: none;
   }
 }
+
+/* Mobile First Approach */
+body {
+  min-width: 100vw;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.content-wrapper {
+  min-height: calc(100vh - 120px);
+  padding-bottom: 60px;
+}
+
+/* Navbar mobile */
+@media (max-width: 992px) {
+  .navbar-desktop {
+    display: none;
+  }
+  
+  body {
+    padding-bottom: 80px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+  .mobile-navbar {
+    display: none;
+  }
+}
