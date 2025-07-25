@@ -16,6 +16,9 @@ const CartProvider = ({ children }) => {
     setCart(prevCart => {
       const existingItem = prevCart.find(item => item.id === product.id);
       if (existingItem) {
+        // Verificar stock antes de agregar
+        if (existingItem.quantity >= product.stock) return prevCart;
+        
         return prevCart.map(item =>
           item.id === product.id 
             ? { ...item, quantity: item.quantity + 1 }
@@ -47,10 +50,17 @@ const CartProvider = ({ children }) => {
   const total = cart.reduce((sum, item) => {
     const price = parseFloat(item.price.replace(/[^0-9.]/g, ''));
     return sum + (isNaN(price) ? 0 : price * item.quantity);
-}, 0);
+  }, 0);
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart, total }}>
+    <CartContext.Provider value={{ 
+      cart, 
+      addToCart, 
+      removeFromCart, 
+      clearCart, 
+      total,
+      cartCount: cart.reduce((sum, item) => sum + item.quantity, 0)
+    }}>
       {children}
     </CartContext.Provider>
   );

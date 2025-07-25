@@ -9,11 +9,14 @@ const AboutUs = () => {
           {/* Logo siempre primero en mobile, izquierda en desktop */}
           <Col md={6} className="mb-4 mb-md-0">
             <div className="shadow-lg rounded overflow-hidden" style={{ maxWidth: '450px', margin: '0 auto' }}>
-              <img
-                src={process.env.PUBLIC_URL + "/assets/lococos-logo.jpg"}                
+              <img 
+                src="https://ryfkxueihiutakmdlhtz.supabase.co/storage/v1/object/public/brands/lococos-logo.jpg"
                 alt="Logo Lococo's"
                 className="img-fluid"
                 style={{ width: '100%', height: 'auto' }}
+                onError={(e) => {
+                  e.target.src = 'https://ryfkxueihiutakmdlhtz.supabase.co/storage/v1/object/public/brands/default-logo.png';
+                }}
               />
             </div>
           </Col>

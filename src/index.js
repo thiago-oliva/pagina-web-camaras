@@ -1,16 +1,14 @@
 import React from 'react';
-import { HashRouter } from 'react-router-dom'; 
-import ReactDOM from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 import App from './App';
-import 'bootstrap/dist/css/bootstrap.min.css'; 
-import '@fortawesome/fontawesome-free/css/all.min.css'; 
-import './styles.css'; 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import './styles.css';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const container = document.getElementById('root');
+const root = createRoot(container);
 root.render(
   <React.StrictMode>
-    <HashRouter>  
-      <App />
-    </HashRouter>
+    <App />
   </React.StrictMode>
 );

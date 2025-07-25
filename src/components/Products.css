@@ -1,109 +1,98 @@
-/* Products.css */
-.carousel-control-prev, 
-.carousel-control-next {
-  width: 5%;
-  background: rgba(0,0,0,0.2);
-  border-radius: 50%;
+/* Estructura principal */
+.container {
+  max-width: 1200px;
+  padding: 0 15px;
+  margin: 0 auto;
 }
 
-.carousel-inner {
-  overflow: visible;
-  padding: 10px 0;
+/* Sección de productos */
+.products-section {
+  margin-bottom: 3rem;
 }
 
-.carousel-item {
-  transition: transform 0.8s ease-in-out;
+.section-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  color: #333;
+  position: relative;
+  padding-bottom: 10px;
 }
 
-.card {
-  width: 100%;
-  min-height: 380px;
-  border: none;
+.section-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: #2a59fe;
+  margin: 10px auto 0;
+}
+
+/* Grid de productos */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  padding: 0;
+}
+
+.product-card {
+  border: 1px solid #e0e0e0;
   border-radius: 12px;
   overflow: hidden;
   transition: all 0.3s ease;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1), 
-              0 0 0 1px rgba(0,0,0,0.05);
-  margin-bottom: 25px;
-  display: flex;
-  flex-direction: column;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  height: 100%;
 }
 
-.card:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+  border-color: #2a59fe;
 }
 
-.card-img-top {
-  height: 200px;
-  width: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.card-body {
-  padding: 1.5rem;
-  flex-grow: 1;
-}
-
-.card-footer {
-  border-top: none;
-  background: transparent !important;
-  padding: 0 1.5rem 1.5rem;
-}
-
-/* Responsive adjustments */
-@media (min-width: 1200px) {
-  .col-xl-3 {
-    flex: 0 0 25%;
-    max-width: 25%;
-  }
-}
-
-@media (max-width: 1199.98px) and (min-width: 992px) {
-  .col-lg-4 {
-    flex: 0 0 33.333333%;
-    max-width: 33.333333%;
-  }
-}
-
-@media (max-width: 991.98px) and (min-width: 768px) {
-  .col-md-6 {
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-}
-
-@media (max-width: 767.98px) {
-  .col-sm-6 {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-}
-
-/* Estilos para la sección de registro */
-.login-notice {
-  border-left: 4px solid #ffc107;
-}
-
-/* Estilos para el marquesina de marcas */
-.brands-marquee-wrapper {
-  overflow: hidden;
-  width: 100%;
-  background: linear-gradient(90deg, #f8f9fa 0%, #ffffff 50%, #f8f9fa 100%);
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  padding: 2rem 0;
-  margin-bottom: 2rem;
-}
-
+/* Marquee de marcas */
 .brands-marquee {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  animation: marquee 25s linear infinite;
-  width: max-content;
-  padding: 1rem 0;
+  margin: 3rem 0;
+  padding: 1.5rem 0;
+  overflow: hidden;
+  background-color: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee-content {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 40s linear infinite;
+  will-change: transform;
+}
+
+.brand-item {
+  display: inline-block;
+  margin: 0 3rem;
+  vertical-align: middle;
+}
+
+.brand-logo {
+  height: 50px;
+  width: auto;
+  max-width: 150px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.brand-logo:hover {
+  filter: grayscale(0%);
+  opacity: 1;
 }
 
 @keyframes marquee {
@@ -111,37 +100,20 @@
   100% { transform: translateX(-50%); }
 }
 
-/* Contenedor de logos (sin rebordes) */
-.brand-logo-container {
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 1.5rem;
+/* Responsive */
+@media (max-width: 1200px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .brand-item {
+    margin: 0 2rem;
+  }
 }
 
-/* Estilos para los logos */
-.brand-logo {
-  height: 50px;
-  width: auto;
-  max-width: 150px;
-  object-fit: contain;
-  filter: grayscale(30%);
-  opacity: 0.9;
-  transition: all 0.3s ease;
-}
-
-.brand-logo:hover {
-  filter: grayscale(0%);
-  opacity: 1;
-  transform: scale(1.05);
-}
-
-/* Estilos responsivos */
-@media (max-width: 768px) {
-  .brand-logo-container {
-    height: 70px;
-    padding: 0 1rem;
+@media (max-width: 992px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
   
   .brand-logo {
@@ -149,119 +121,87 @@
     max-width: 120px;
   }
   
-  .brands-marquee {
-    gap: 1rem;
-  }
-}
-
-/* Products.css - Añade al final */
-
-@media (max-width: 1200px) {
-  .brand-logo {
-    max-height: 50px;
-    max-width: 120px;
-  }
-}
-
-@media (max-width: 992px) {
-  .brand-logo-container {
-    height: 70px;
-    padding: 0 1rem;
-  }
-  
-  .card {
-    min-height: 350px;
-  }
-  
-  .card-img-top {
-    height: 180px;
+  .marquee-content {
+    animation-duration: 30s;
   }
 }
 
 @media (max-width: 768px) {
-  .brands-marquee {
-    gap: 1.5rem;
+  .brand-logo {
+    height: 30px;
+    max-width: 100px;
   }
   
-  .card {
-    min-height: 320px;
-    margin-bottom: 15px;
-  }
-  
-  .card-img-top {
-    height: 150px;
-  }
-  
-  .card-body {
-    padding: 1rem;
+  .brand-item {
+    margin: 0 1.5rem;
   }
 }
 
 @media (max-width: 576px) {
-  .brand-logo {
-    max-height: 40px;
-    max-width: 100px;
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
   
-  .brand-logo-container {
-    height: 60px;
-    padding: 0 0.5rem;
-  }
-  
-  .card {
-    min-height: 300px;
-  }
-  
-  .card-img-top {
-    height: 120px;
-  }
-  
-  h2.text-center {
+  .section-title {
     font-size: 1.5rem;
   }
+  
+  .brand-logo {
+    height: 25px;
+    max-width: 80px;
+  }
+  
+  .marquee-content {
+    animation-duration: 25s;
+  }
 }
 
-/* Products.css - Añadir estos estilos */
-.card {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.card-img-container {
-  position: relative;
-  height: 200px;
+/* Estilos para el marquee de marcas */
+.brands-marquee {
+  margin: 3rem 0;
+  padding: 1.5rem 0;
   overflow: hidden;
+  background-color: transparent; /* Cambiado de #f8f9fa a transparente */
 }
 
-.card-img-top {
+.marquee-container {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
+  overflow: hidden;
+  position: relative;
 }
 
-.card:hover .card-img-top {
-  transform: scale(1.05);
+.marquee-content {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 40s linear infinite;
+  will-change: transform;
 }
 
-.card-img-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-  padding: 1rem;
-  color: white;
+.brand-item {
+  display: inline-block;
+  margin: 0 3rem;
+  vertical-align: middle;
+  transition: transform 0.3s ease; /* Agregado para el efecto hover */
 }
 
-.card-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+.brand-logo {
+  height: 70px;
+  width: auto;
+  max-width: 150px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: all 0.3s ease;
 }
 
-.card-footer {
-  margin-top: auto;
-  padding-top: 0;
+.brand-item:hover .brand-logo {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.2); /* Agrandar la imagen al hacer hover */
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }

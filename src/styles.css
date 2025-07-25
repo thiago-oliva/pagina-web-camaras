@@ -190,3 +190,16 @@ html {
 section {
   scroll-margin-top: 70px; /* Ajusta según la altura de tu navbar */
 }
+
+/* Añade esto al final */
+@media (max-width: 992px) {
+  /* Asegurar que el footer tenga espacio para el navbar mobile */
+  footer {
+    padding-bottom: 70px;
+  }
+  
+  /* Ocultar botones flotantes en mobile */
+  .cart-button {
+    display: none;
+  }
+}

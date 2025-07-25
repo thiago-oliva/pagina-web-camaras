@@ -87,3 +87,26 @@
     right: 15px;
   }
 }
+
+/* Cart.css */
+.cart-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ocultar en móviles */
+@media (max-width: 992px) {
+  .cart-button {
+    display: none;
+  }
+}
+
+/* Resto de tus estilos... */
