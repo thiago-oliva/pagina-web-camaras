@@ -1,7 +1,7 @@
 /* WhatsAppButton.css */
 .whatsapp-container {
   position: fixed;
-  bottom: 90px; /* Cambiado de 20px a 90px para posicionar arriba del carrito */
+  bottom: 90px;
   right: 20px;
   z-index: 1000;
 }
@@ -19,17 +19,20 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   cursor: pointer;
   transition: all 0.3s ease;
-  position: relative; /* Añadido para el tooltip */
+  position: relative;
+  text-decoration: none !important; /* Aseguramos que no tenga subrayado */
 }
 
 .whatsapp-icon {
   font-size: 30px;
+  text-decoration: none !important; /* Elimina subrayado del icono */
 }
 
 .whatsapp-float:hover {
   background-color: #128C7E;
   transform: translateY(-5px);
   box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+  text-decoration: none !important; /* Elimina subrayado en hover */
 }
 
 .whatsapp-tooltip {
@@ -38,6 +41,7 @@
   top: 50%;
   transform: translateY(-50%);
   background: white;
+  color: #333;
   padding: 8px 12px;
   border-radius: 20px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -45,6 +49,7 @@
   white-space: nowrap;
   opacity: 0;
   transition: all 0.3s ease;
+  text-decoration: none !important;
 }
 
 .whatsapp-float:hover .whatsapp-tooltip {
@@ -52,6 +57,27 @@
 }
 
 /* Responsive */
+@media (max-width: 992px) {
+  .whatsapp-container {
+    bottom: 75px;
+    right: 15px;
+  }
+  
+  .whatsapp-float {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .whatsapp-icon {
+    font-size: 25px;
+  }
+  
+  .whatsapp-tooltip {
+    right: 60px;
+    font-size: 12px;
+  }
+}
+
 @media (max-width: 768px) {
   .whatsapp-float {
     width: 50px;
@@ -68,67 +94,13 @@
   }
 }
 
-/* WhatsAppButton.css - Modifica */
-@media (max-width: 992px) {
-  .whatsapp-container {
-    bottom: 75px; /* Ajusta posición relativa al carrito */
-    right: 15px;
-  }
-  
-  .whatsapp-float {
-    width: 50px;
-    height: 50px;
-  }
-  
-  .whatsapp-icon {
-    font-size: 25px;
-  }
-  
-  .whatsapp-tooltip {
-    right: 60px;
-    font-size: 12px;
-  }
-}
-
 @media (max-width: 576px) {
   .whatsapp-container {
     bottom: 70px;
   }
   
   .whatsapp-tooltip {
-    display: none; /* Oculta tooltip en móviles pequeños */
-  }
-}
-
-.whatsapp-float {
-  /* ... otros estilos ... */
-  overflow: hidden; /* Oculta cualquier contenido que sobresalga */
-}
-
-.whatsapp-icon {
-  font-size: 30px;
-  line-height: 1; /* Asegura que no haya espacio vertical extra */
-  display: block;
-  margin: 0 auto;
-  position: relative;
-  top: 1px; /* Ajuste fino de posición si es necesario */
-}
-
-/* Versión alternativa usando SVG */
-.whatsapp-float svg {
-  width: 30px;
-  height: 30px;
-  display: block;
-  margin: 0 auto;
-  fill: white;
-}
-
-/* ... mantener los estilos existentes ... */
-
-@media (max-width: 576px) {
-  .whatsapp-container {
-    bottom: 80px;
-    right: 15px;
+    display: none;
   }
   
   .whatsapp-float {
@@ -139,4 +111,19 @@
   .whatsapp-icon {
     font-size: 25px;
   }
+}
+
+/* Estilos adicionales para asegurar que no haya subrayado */
+a.whatsapp-float, 
+a.whatsapp-float:link, 
+a.whatsapp-float:visited, 
+a.whatsapp-float:hover, 
+a.whatsapp-float:active {
+  text-decoration: none !important;
+  outline: none !important;
+}
+
+/* Asegurar que el icono no tenga subrayado */
+.fa-whatsapp {
+  text-decoration: none !important;
 }

@@ -43,7 +43,7 @@ const Cart = () => {
   };
 
   const handleCheckout = async () => {
-    if (!isClient()) {
+    if (!isClient || !isClient()) {
       setError('Debes iniciar sesión como cliente para completar la compra');
       return;
     }
@@ -128,7 +128,7 @@ const Cart = () => {
             <Alert variant="success">
               <Alert.Heading>¡Orden creada con éxito!</Alert.Heading>
               <p>
-                Tu orden #12345 ha sido registrada. 
+                Tu orden ha sido registrada. 
                 <br />
                 <strong>Próximos pasos:</strong>
                 <ol>
@@ -186,7 +186,7 @@ const Cart = () => {
                     <td colSpan="3" className="text-end fw-bold">Subtotal:</td>
                     <td colSpan="2" className="fw-bold">${total.toFixed(2)}</td>
                   </tr>
-                  {isClient() && (
+                  {isClient && isClient() && (
                     <tr>
                       <td colSpan="3" className="text-end fw-bold">IVA (21%):</td>
                       <td colSpan="2" className="fw-bold">${(total * 0.21).toFixed(2)}</td>
@@ -195,15 +195,15 @@ const Cart = () => {
                   <tr>
                     <td colSpan="3" className="text-end fw-bold">Total:</td>
                     <td colSpan="2" className="fw-bold">
-                      ${isClient() ? (total * 1.21).toFixed(2) : total.toFixed(2)}
-                      {!isClient() && <small className="text-muted d-block">+IVA (visible al iniciar sesión)</small>}
+                      ${isClient && isClient() ? (total * 1.21).toFixed(2) : total.toFixed(2)}
+                      {!(isClient && isClient()) && <small className="text-muted d-block">+IVA (visible al iniciar sesión)</small>}
                     </td>
                   </tr>
                 </tfoot>
               </Table>
 
               {/* Formulario de envío */}
-              {isClient() && (
+              {isClient && isClient() && (
                 <div className="mt-4">
                   <h5>Información de Envío/Retiro</h5>
                   <Form>
@@ -271,7 +271,7 @@ const Cart = () => {
             onClick={handleCheckout} 
             disabled={cart.length === 0 || orderSuccess || loading}
           >
-            {loading ? 'Procesando...' : isClient() ? 'Confirmar Compra' : 'Iniciar Sesión para Comprar'}
+            {loading ? 'Procesando...' : (isClient && isClient()) ? 'Confirmar Compra' : 'Iniciar Sesión para Comprar'}
           </Button>
         </Modal.Footer>
       </Modal>

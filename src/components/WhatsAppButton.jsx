@@ -13,6 +13,7 @@ const WhatsAppButton = () => {
         rel="noopener noreferrer"
         className="whatsapp-float"
         aria-label="Contactar por WhatsApp"
+        style={{ textDecoration: 'none' }} // Elimina el subrayado directamente aquí
       >
         <i className="fab fa-whatsapp whatsapp-icon"></i>
         <span className="whatsapp-tooltip">¿Necesitas ayuda?</span>

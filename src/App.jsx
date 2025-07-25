@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './components/CartContext';
 import { AuthProvider } from './components/AuthContext';
 import Navbar from './components/Navbar';
@@ -15,10 +15,10 @@ import Register from './components/Register';
 import AdminDashboard from './components/AdminDashboard';
 import PrivateRoute from './components/PrivateRoute';
 import WelcomeBanner from './components/WelcomeBanner';
+import EmailConfirmed from './components/EmailConfirmed';
 import './components/CartAnimation.css';
 
 function App() {
-  // Corrección para mobile y padding
   useEffect(() => {
     const handleResizeAndScroll = () => {
       // Ajuste para mobile
@@ -32,14 +32,9 @@ function App() {
         document.body.style.paddingBottom = '0';
       }
 
-      // Scroll suave para anclas
-      if (window.location.hash) {
-        const element = document.querySelector(window.location.hash);
-        if (element) {
-          setTimeout(() => {
-            element.scrollIntoView({ behavior: 'smooth' });
-          }, 100);
-        }
+      // Manejar tokens de autenticación en la URL
+      if (window.location.hash.includes('access_token')) {
+        window.history.replaceState({}, document.title, window.location.pathname);
       }
     };
 
@@ -64,6 +59,7 @@ function App() {
               <Routes>
                 <Route path="/login" element={<Login />} />
                 <Route path="/registrar" element={<Register />} />
+                <Route path="/email-confirmed" element={<EmailConfirmed />} />
                 <Route path="/admin" element={
                   <PrivateRoute adminOnly>
                     <AdminDashboard />
