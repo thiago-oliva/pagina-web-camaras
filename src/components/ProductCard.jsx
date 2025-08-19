@@ -4,39 +4,61 @@ import { useAuth } from "./AuthContext";
 
 export default function ProductCard({ product }) {
   const { addToCart } = useContext(CartContext);
-  const { isClient, applyDiscount, user } = useAuth();
+  const { user, role, discountPct, applyDiscount, isClient } = useAuth();
 
-  // Asegurar que los precios sean numéricos
   let priceValue = parseFloat(product.precio_venta) || 0;
+  let discountedPrice = priceValue;
 
-  // Si hay usuario y es cliente, aplicar descuento
   if (user && isClient) {
-    priceValue = applyDiscount(priceValue);
+    discountedPrice = applyDiscount(priceValue);
   }
 
+  const handleAddToCart = () => {
+    addToCart({ 
+      ...product, 
+      precio_unitario: discountedPrice, // Asegurar que pasa el precio con descuento
+      precio_venta: priceValue // Mantener el precio original también
+    });
+  };
+
   return (
-    <div className="border p-4 rounded-lg shadow-md bg-white">
+    <div className="card h-100 shadow-sm">
       <img
         src={product.imagen_url}
         alt={product.descripcion}
-        className="w-full h-40 object-cover rounded-md mb-2"
+        className="card-img-top"
+        style={{ height: '200px', objectFit: 'cover' }}
       />
-      <h3 className="text-lg font-bold">{product.descripcion}</h3>
-      <p className="text-gray-600">Marca: {product.marca}</p>
-      <p className="text-gray-800 font-semibold">${priceValue.toFixed(2)}</p>
+      <div className="card-body d-flex flex-column">
+        <h5 className="card-title">{product.descripcion}</h5>
+        <p className="card-text text-muted">Marca: {product.marca}</p>
+        
+        {discountedPrice < priceValue ? (
+          <>
+            <p className="text-muted text-decoration-line-through mb-1">${priceValue.toFixed(2)}</p>
+            <p className="text-success fw-bold fs-4 mb-1">${discountedPrice.toFixed(2)}</p>
+            <small className="text-success">
+              {Math.round(discountPct * 100)}% de descuento ({role})
+            </small>
+          </>
+        ) : (
+          <p className="text-dark fw-bold fs-4">${priceValue.toFixed(2)}</p>
+        )}
 
-      {isClient && product.precio_gremio && (
-        <small className="text-green-600 block">
-          Precio gremio: ${parseFloat(product.precio_gremio).toFixed(2)}
-        </small>
-      )}
+        {isClient && product.precio_gremio && (
+          <small className="text-info mt-2">
+            Precio gremio: ${parseFloat(product.precio_gremio).toFixed(2)}
+          </small>
+        )}
 
-      <button
-        onClick={() => addToCart(product)}
-        className="mt-3 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300"
-      >
-        Agregar al carrito
-      </button>
+        <button
+          onClick={handleAddToCart}
+          className="btn btn-primary mt-3"
+        >
+          <i className="fas fa-cart-plus me-2"></i>
+          Agregar al carrito
+        </button>
+      </div>
     </div>
   );
 }

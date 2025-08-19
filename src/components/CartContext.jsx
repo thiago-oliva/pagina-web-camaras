@@ -17,7 +17,7 @@ const CartProvider = ({ children }) => {
       const existingItem = prevCart.find(item => item.id === product.id);
       if (existingItem) {
         // Verificar stock antes de agregar
-        if (existingItem.quantity >= product.stock) return prevCart;
+        if (existingItem.quantity >= (product.stock || 999)) return prevCart;
         
         return prevCart.map(item =>
           item.id === product.id 
@@ -48,7 +48,8 @@ const CartProvider = ({ children }) => {
   };
 
   const total = cart.reduce((sum, item) => {
-    const price = parseFloat(item.price.replace(/[^0-9.]/g, ''));
+    // Usar precio_unitario (que ahora contiene el precio con descuento)
+    const price = parseFloat(item.precio_unitario || item.precio_venta || 0);
     return sum + (isNaN(price) ? 0 : price * item.quantity);
   }, 0);
 

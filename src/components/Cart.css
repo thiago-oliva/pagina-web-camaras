@@ -191,3 +191,51 @@
   font-size: 0.75rem;
   font-weight: bold;
 }
+
+/* Cart.css - Botón flotante */
+.cart-floating-button {
+  position: fixed;
+  bottom: 20px;
+  right: 90px;
+  z-index: 1000;
+}
+
+.cart-floating-button .btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+.cart-floating-button .btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+}
+
+/* Ajustar posición para móviles */
+@media (max-width: 768px) {
+  .cart-floating-button {
+    bottom: 80px;
+    right: 20px;
+  }
+  
+  .cart-floating-button .btn {
+    width: 50px;
+    height: 50px;
+    font-size: 1.1rem;
+  }
+}
+
+/* Asegurar que no interfiera con WhatsApp */
+.whatsapp-container {
+  z-index: 1001 !important;
+}
+
+.cart-floating-button {
+  z-index: 1000;
+}

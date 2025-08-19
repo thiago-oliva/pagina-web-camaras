@@ -1,77 +1,119 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { CartContext } from "./CartContext";
+import { useAuth } from "./AuthContext";
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const { cartCount } = useContext(CartContext);
+  const { user, loading, logout } = useAuth();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch (error) {
+      console.error('Error al cerrar sesión:', error);
+    }
+  };
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-black bg-opacity-90 text-white z-50 shadow-md">
-      <div className="max-w-6xl mx-auto px-4 flex justify-between items-center h-16">
-        {/* Logo */}
-        <div className="text-2xl font-bold">
-          <a href="#inicio" className="hover:text-gray-300 transition">
-            Mi Tienda
-          </a>
-        </div>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div className="container">
+        {/* Logo a la izquierda */}
+        <a className="navbar-brand fw-bold fs-3" href="#inicio">
+          🛡️ Sistema Seguridad
+        </a>
+        
+        <button 
+          className="navbar-toggler" 
+          type="button" 
+          data-bs-toggle="collapse" 
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav" 
+          aria-expanded="false" 
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        
+        <div className="collapse navbar-collapse" id="navbarNav">
+          {/* Links a la izquierda */}
+          <ul className="navbar-nav me-auto">
+            <li className="nav-item">
+              <a className="nav-link" href="#inicio">Inicio</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#productos">Productos</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#nosotros">Nosotros</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#contacto">Contacto</a>
+            </li>
+          </ul>
 
-        {/* Desktop Links */}
-        <div className="space-x-6 hidden md:flex">
-          <a href="#inicio" className="hover:text-gray-300 transition">
-            Inicio
-          </a>
-          <a href="#productos" className="hover:text-gray-300 transition">
-            Productos
-          </a>
-          <a href="#carrito" className="hover:text-gray-300 transition">
-            Carrito
-          </a>
-          <a href="#nosotros" className="hover:text-gray-300 transition">
-            Sobre Nosotros
-          </a>
-          <a href="#contacto" className="hover:text-gray-300 transition">
-            Contacto
-          </a>
-        </div>
+          {/* Iconos a la derecha */}
+          <ul className="navbar-nav ms-auto">
+            {/* Icono de carrito */}
+            <li className="nav-item">
+              <a className="nav-link position-relative" href="#carrito">
+                <i className="fas fa-shopping-cart fa-lg"></i>
+                {cartCount > 0 && (
+                  <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    {cartCount}
+                  </span>
+                )}
+              </a>
+            </li>
 
-        {/* Mobile Menu Button */}
-        <div className="md:hidden">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="text-white focus:outline-none"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
-              />
-            </svg>
-          </button>
+            {/* Icono de usuario */}
+            <li className="nav-item dropdown">
+              <a 
+                className="nav-link dropdown-toggle" 
+                href="#" 
+                role="button" 
+                data-bs-toggle="dropdown" 
+                aria-expanded="false"
+              >
+                <i className="fas fa-user fa-lg"></i>
+              </a>
+              <ul className="dropdown-menu dropdown-menu-end">
+                {loading ? (
+                  <li><span className="dropdown-item-text">Cargando...</span></li>
+                ) : user ? (
+                  <>
+                    <li><span className="dropdown-item-text">Hola, {user.email}</span></li>
+                    <li><hr className="dropdown-divider" /></li>
+                    <li><a className="dropdown-item" href="#carrito">Mi Carrito</a></li>
+                    <li><a className="dropdown-item" href="#perfil">Mi Perfil</a></li>
+                    <li><hr className="dropdown-divider" /></li>
+                    <li>
+                      <button className="dropdown-item" onClick={handleLogout}>
+                        <i className="fas fa-sign-out-alt me-2"></i>
+                        Cerrar Sesión
+                      </button>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li>
+                      <a className="dropdown-item" href="/login">
+                        <i className="fas fa-sign-in-alt me-2"></i>
+                        Iniciar Sesión
+                      </a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="/registro">
+                        <i className="fas fa-user-plus me-2"></i>
+                        Registrarse
+                      </a>
+                    </li>
+                  </>
+                )}
+              </ul>
+            </li>
+          </ul>
         </div>
       </div>
-
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-black bg-opacity-95">
-          <div className="px-4 py-2 space-y-2">
-            <a href="#inicio" className="block py-2 hover:text-gray-300 transition">
-              Inicio
-            </a>
-            <a href="#productos" className="block py-2 hover:text-gray-300 transition">
-              Productos
-            </a>
-            <a href="#carrito" className="block py-2 hover:text-gray-300 transition">
-              Carrito
-            </a>
-            <a href="#nosotros" className="block py-2 hover:text-gray-300 transition">
-              Sobre Nosotros
-            </a>
-            <a href="#contacto" className="block py-2 hover:text-gray-300 transition">
-              Contacto
-            </a>
-          </div>
-        </div>
-      )}
     </nav>
   );
 }

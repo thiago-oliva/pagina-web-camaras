@@ -6,6 +6,8 @@ import AboutUs from "./components/AboutUs";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import AdminDashboard from "./components/AdminDashboard";
+import WhatsAppButton from "./components/WhatsAppButton";
+import FloatingCartButton from "./components/FloatingCartButton";
 import { CartProvider } from "./components/CartContext";
 import { AuthProvider, useAuth } from "./components/AuthContext";
 
@@ -14,43 +16,59 @@ function ProtectedAdminRoute() {
   const { user, role, loading } = useAuth();
 
   if (loading) {
-    return <div className="container mx-auto py-8 text-center">Cargando...</div>;
+    return (
+      <div className="container py-5">
+        <div className="text-center">
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Cargando...</span>
+          </div>
+          <p className="mt-2">Cargando...</p>
+        </div>
+      </div>
+    );
   }
 
-  // Solo mostrar admin si el usuario está autenticado y es admin
   if (user && role === "admin") {
     return (
-      <section id="admin" className="py-5 bg-gray-50">
-        <div className="container mx-auto px-4">
+      <section id="admin" className="py-5 bg-light">
+        <div className="container">
           <AdminDashboard />
         </div>
       </section>
     );
   }
 
-  return null; // No mostrar nada si no es admin
+  return null;
 }
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-vh-100">
       <AuthProvider>
         <CartProvider>
           <Navbar />
-          <main className="pt-16"> {/* Padding para el navbar fixed */}
-            <section id="inicio" className="bg-gray-900 py-5">
+          <main style={{ paddingTop: '76px' }}>
+            <section id="inicio">
               <Hero />
             </section>
             <Products />
             <section id="aboutus" className="py-5 bg-white">
-              <AboutUs />
+              <div className="container">
+                <AboutUs />
+              </div>
             </section>
-            <section id="contacto" className="py-5 bg-gray-50">
-              <Contact />
+            <section id="contacto" className="py-5 bg-light">
+              <div className="container">
+                <Contact />
+              </div>
             </section>
             <ProtectedAdminRoute />
           </main>
           <Footer />
+          
+          {/* Botones flotantes */}
+          <FloatingCartButton />
+          <WhatsAppButton />
         </CartProvider>
       </AuthProvider>
     </div>
