@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import { CartContext } from './CartContext';
 import { useAuth } from './AuthContext';
 import { Dropdown } from 'react-bootstrap';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link as RouterLink, useNavigate, useLocation } from 'react-router-dom';
+import { Link as ScrollLink } from 'react-scroll';
 import '../styles.css';
 
 const Navbar = () => {
@@ -12,6 +13,7 @@ const Navbar = () => {
   const location = useLocation();
 
   const isAuthPage = ['/login', '/registrar'].includes(location.pathname);
+  const isHomePage = location.pathname === '/';
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -26,49 +28,77 @@ const Navbar = () => {
     await logout();
   };
 
-  // Navbar simplificado para páginas de autenticación
+  // Navbar simplificado y elegante para páginas de autenticación
   if (isAuthPage) {
     return (
-      <nav className="navbar simplified-navbar fixed-top">
+      <nav className="navbar auth-navbar fixed-top">
         <div className="container">
-          <Link className="navbar-brand" to="/" onClick={scrollToTop}>
-            <img 
-              src="/logo-lococos.png" 
-              alt="Lococo's" 
-              className="navbar-logo"
-            />
-          </Link>
+          <RouterLink className="navbar-brand auth-brand" to="/" onClick={scrollToTop}>
+            <span className="logo-text">LOCOCO'S</span>
+            <span className="logo-subtitle">SISTEMAS DE SEGURIDAD</span>
+          </RouterLink>
         </div>
       </nav>
     );
   }
+
+  const renderSectionLink = (to, text, offset = -70) => {
+    if (isHomePage) {
+      return (
+        <ScrollLink
+          to={to}
+          spy={true}
+          smooth={true}
+          offset={offset}
+          duration={500}
+          className="nav-link"
+          style={{ cursor: 'pointer' }}
+        >
+          {text}
+        </ScrollLink>
+      );
+    } else {
+      return (
+        <RouterLink
+          className="nav-link"
+          to="/"
+          onClick={() => {
+            sessionStorage.setItem('scrollToSection', to);
+            scrollToTop();
+          }}
+        >
+          {text}
+        </RouterLink>
+      );
+    }
+  };
 
   return (
     <>
       {/* Navbar para desktop */}
       <nav className="navbar navbar-expand-lg navbar-dark main-navbar fixed-top d-none d-lg-block">
         <div className="container">
-          <Link className="navbar-brand" to="/" onClick={scrollToTop}>
+          <RouterLink className="navbar-brand" to="/" onClick={scrollToTop}>
             <span className="logo-text">LOCOCO'S</span>
-          </Link>
+          </RouterLink>
           
           <div className="collapse navbar-collapse">
             <ul className="navbar-nav me-auto">
               <li className="nav-item">
-                <Link className="nav-link" to="/" onClick={scrollToTop}>Inicio</Link>
+                <RouterLink className="nav-link" to="/" onClick={scrollToTop}>Inicio</RouterLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="#productos">Productos</Link>
+                {renderSectionLink('productos', 'Productos')}
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="#nosotros">Nosotros</Link>
+                {renderSectionLink('nosotros', 'Nosotros')}
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="#contacto">Contacto</Link>
+                {renderSectionLink('contacto', 'Contacto')}
               </li>
               {isAdmin() && (
                 <li className="nav-item">
-                  <Link className="nav-link" to="/admin">Admin</Link>
+                  <RouterLink className="nav-link" to="/admin">Admin</RouterLink>
                 </li>
               )}
             </ul>
@@ -83,11 +113,11 @@ const Navbar = () => {
                 <Dropdown.Menu align="end">
                   {user ? (
                     <>
-                      <Dropdown.Item as={Link} to="/perfil">
+                      <Dropdown.Item as={RouterLink} to="/perfil">
                         <i className="fas fa-user me-2"></i>Mi Perfil
                       </Dropdown.Item>
                       {isAdmin() && (
-                        <Dropdown.Item as={Link} to="/admin">
+                        <Dropdown.Item as={RouterLink} to="/admin">
                           <i className="fas fa-chart-line me-2"></i>Dashboard
                         </Dropdown.Item>
                       )}
@@ -98,10 +128,10 @@ const Navbar = () => {
                     </>
                   ) : (
                     <>
-                      <Dropdown.Item as={Link} to="/login">
+                      <Dropdown.Item as={RouterLink} to="/login">
                         <i className="fas fa-sign-in-alt me-2"></i>Iniciar Sesión
                       </Dropdown.Item>
-                      <Dropdown.Item as={Link} to="/registrar">
+                      <Dropdown.Item as={RouterLink} to="/registrar">
                         <i className="fas fa-user-plus me-2"></i>Registrarse
                       </Dropdown.Item>
                     </>
@@ -109,7 +139,7 @@ const Navbar = () => {
                 </Dropdown.Menu>
               </Dropdown>
 
-              <Link to="#" className="cart-icon ms-3" onClick={(e) => {
+              <RouterLink to="#" className="cart-icon ms-3" onClick={(e) => {
                 e.preventDefault();
                 document.querySelector('.cart-button')?.click();
               }}>
@@ -119,7 +149,7 @@ const Navbar = () => {
                     {cart.reduce((sum, item) => sum + item.quantity, 0)}
                   </span>
                 )}
-              </Link>
+              </RouterLink>
             </div>
           </div>
         </div>
@@ -129,10 +159,10 @@ const Navbar = () => {
       <nav className="mobile-navbar d-lg-none fixed-bottom">
         <div className="container">
           <div className="mobile-navbar-content">
-            <Link to="/" className="mobile-nav-item">
+            <RouterLink to="/" className="mobile-nav-item">
               <i className="fas fa-home"></i>
               <span>Inicio</span>
-            </Link>
+            </RouterLink>
             
             <div className="mobile-nav-item cart-mobile" onClick={(e) => {
               e.preventDefault();
@@ -153,13 +183,13 @@ const Navbar = () => {
               <div className="dropdown-menu">
                 {user ? (
                   <>
-                    <Link className="dropdown-item" to="/perfil">
+                    <RouterLink className="dropdown-item" to="/perfil">
                       <i className="fas fa-user me-2"></i>Mi Perfil
-                    </Link>
+                    </RouterLink>
                     {isAdmin() && (
-                      <Link className="dropdown-item" to="/admin">
+                      <RouterLink className="dropdown-item" to="/admin">
                         <i className="fas fa-chart-line me-2"></i>Dashboard
-                      </Link>
+                      </RouterLink>
                     )}
                     <div className="dropdown-divider"></div>
                     <button className="dropdown-item" onClick={handleLogout}>
@@ -168,12 +198,12 @@ const Navbar = () => {
                   </>
                 ) : (
                   <>
-                    <Link className="dropdown-item" to="/login">
+                    <RouterLink className="dropdown-item" to="/login">
                       <i className="fas fa-sign-in-alt me-2"></i>Ingresar
-                    </Link>
-                    <Link className="dropdown-item" to="/registrar">
+                    </RouterLink>
+                    <RouterLink className="dropdown-item" to="/registrar">
                       <i className="fas fa-user-plus me-2"></i>Registrarse
-                    </Link>
+                    </RouterLink>
                   </>
                 )}
               </div>

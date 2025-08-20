@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { CartProvider } from './components/CartContext';
 import { AuthProvider, useAuth } from './components/AuthContext';
 import Navbar from './components/Navbar';
@@ -24,6 +24,7 @@ import './components/CartAnimation.css';
 function AppContent() {
   const { loading, logoutLoading } = useAuth();
   const [initialLoad, setInitialLoad] = useState(true);
+  const location = useLocation();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -59,6 +60,29 @@ function AppContent() {
     };
   }, []);
 
+  // Efecto para manejar el scroll automático a secciones
+  useEffect(() => {
+    if (location.pathname === '/') {
+      const sectionToScroll = sessionStorage.getItem('scrollToSection');
+      if (sectionToScroll) {
+        setTimeout(() => {
+          const element = document.getElementById(sectionToScroll);
+          if (element) {
+            const offset = 70; // Altura aproximada del navbar
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+          sessionStorage.removeItem('scrollToSection');
+        }, 300);
+      }
+    }
+  }, [location]);
+
   if (initialLoad || loading) {
     return <LoadingScreen />;
   }
@@ -74,6 +98,9 @@ function AppContent() {
         <WelcomeBanner />
         <div className="content-wrapper">
           <Routes>
+            {/* Redirección para la ruta /pagina-web-camaras */}
+            <Route path="/pagina-web-camaras" element={<Navigate to="/" replace />} />
+            
             <Route path="/login" element={
               <>
                 <AuthRedirect />
@@ -105,6 +132,9 @@ function AppContent() {
                 <Contact />
               </>
             } />
+            
+            {/* Ruta de catch-all para cualquier otra ruta no definida */}
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>
       </main>
