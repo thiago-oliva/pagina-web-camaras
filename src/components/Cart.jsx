@@ -34,7 +34,9 @@ const Cart = () => {
   const handleShow = () => setShow(true);
 
   const getPriceValue = (priceString) => {
-    return parseFloat(priceString.replace(/[^0-9.]/g, '')) || 0;
+    // Verificar si priceString existe y es un string
+    const safePriceString = priceString && typeof priceString === 'string' ? priceString : '0';
+    return parseFloat(safePriceString.replace(/[^0-9.]/g, '')) || 0;
   };
 
   const handleInputChange = (e) => {

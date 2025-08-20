@@ -48,7 +48,9 @@ const CartProvider = ({ children }) => {
   };
 
   const total = cart.reduce((sum, item) => {
-    const price = parseFloat(item.price.replace(/[^0-9.]/g, ''));
+    // Verificar si item.price existe y es un string
+    const priceString = item.price && typeof item.price === 'string' ? item.price : '0';
+    const price = parseFloat(priceString.replace(/[^0-9.]/g, ''));
     return sum + (isNaN(price) ? 0 : price * item.quantity);
   }, 0);
 
