@@ -19,6 +19,7 @@ import EmailConfirmed from './components/EmailConfirmed';
 import LogoutAnimation from './components/LogoutAnimation';
 import AuthRedirect from './components/AuthRedirect';
 import LoadingScreen from './components/LoadingScreen';
+import FloatingCartButton from './components/FloatingCartButton';
 import './components/CartAnimation.css';
 
 function AppContent() {
@@ -151,9 +152,9 @@ function AppContent() {
           </Routes>
         </div>
       </main>
-      <WhatsAppButton />
-      <Cart />
       <Footer />
+      <WhatsAppButton />
+      <FloatingCartButton />
     </>
   );
 }
