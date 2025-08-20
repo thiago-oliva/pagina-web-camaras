@@ -39,6 +39,21 @@ function AppContent() {
       document.body.style.overflowX = 'hidden';
       document.body.style.minWidth = '320px';
       
+      // Ajustar padding según el tipo de navbar
+      const isAuthPage = ['/login', '/registrar'].includes(location.pathname);
+      const isAdminPage = location.pathname === '/admin';
+      
+      if (isAuthPage) {
+        // Navbar de auth más compacto
+        document.body.style.paddingTop = '80px';
+      } else if (isAdminPage) {
+        // Navbar normal para admin
+        document.body.style.paddingTop = '76px';
+      } else {
+        // Navbar normal para otras páginas
+        document.body.style.paddingTop = '76px';
+      }
+      
       if (window.innerWidth < 992) {
         document.body.style.paddingBottom = '80px';
       } else {
@@ -58,7 +73,7 @@ function AppContent() {
       window.removeEventListener('resize', handleResizeAndScroll);
       window.removeEventListener('load', handleResizeAndScroll);
     };
-  }, []);
+  }, [location]);
 
   // Efecto para manejar el scroll automático a secciones
   useEffect(() => {
@@ -68,7 +83,7 @@ function AppContent() {
         setTimeout(() => {
           const element = document.getElementById(sectionToScroll);
           if (element) {
-            const offset = 70; // Altura aproximada del navbar
+            const offset = 70;
             const elementPosition = element.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - offset;
             
@@ -98,7 +113,6 @@ function AppContent() {
         <WelcomeBanner />
         <div className="content-wrapper">
           <Routes>
-            {/* Redirección para la ruta /pagina-web-camaras */}
             <Route path="/pagina-web-camaras" element={<Navigate to="/" replace />} />
             
             <Route path="/login" element={
@@ -133,7 +147,6 @@ function AppContent() {
               </>
             } />
             
-            {/* Ruta de catch-all para cualquier otra ruta no definida */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>

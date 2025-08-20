@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from './AuthContext';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Form, Button, Alert, Container, Card } from 'react-bootstrap';
+import { Form, Button, Alert, Container, Card, Spinner } from 'react-bootstrap';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -28,7 +28,7 @@ const Login = () => {
   };
 
   return (
-    <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: '80vh' }}>
+    <Container className="auth-container">
       <Card className="w-100" style={{ maxWidth: '400px' }}>
         <Card.Body>
           <h2 className="text-center mb-4">Iniciar Sesión</h2>

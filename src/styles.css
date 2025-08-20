@@ -185,3 +185,98 @@ body {
 .auth-navbar + .container .card-body {
   padding: 2.5rem;
 }
+
+/* Navbar para páginas de autenticación */
+.auth-navbar {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+  padding: 0.8rem 0;
+  height: 70px;
+  z-index: 1030;
+}
+
+.auth-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  margin: 0 auto;
+}
+
+.logo-text {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  line-height: 1;
+}
+
+.logo-subtitle {
+  font-size: 0.7rem;
+  color: #ecf0f1;
+  opacity: 0.9;
+  margin-top: 2px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* Asegurar que el contenido de login/register sea visible */
+.container.auth-container {
+  padding-top: 2rem;
+  min-height: calc(100vh - 140px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mejoras para las cards de login/register */
+.auth-navbar + main .card {
+  border: none;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  border-radius: 15px;
+  margin-top: 0;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+}
+
+.auth-navbar + main .card-body {
+  padding: 2.5rem;
+}
+
+/* Ajustes específicos para el admin dashboard */
+.main-navbar + main .container.mt-4 {
+  padding-top: 20px;
+}
+
+/* Para móviles */
+@media (max-width: 768px) {
+  .auth-navbar {
+    height: 60px;
+    padding: 0.5rem 0;
+  }
+  
+  .logo-text {
+    font-size: 1.5rem;
+  }
+  
+  .logo-subtitle {
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+  }
+  
+  .auth-navbar + main .card-body {
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* Contenedor específico para admin */
+.admin-container {
+  padding-top: 20px;
+  min-height: calc(100vh - 150px);
+}
+
+/* Asegurar que el contenido no se oculte detrás del navbar */
+.main-navbar + main .admin-container {
+  margin-top: 80px;
+}

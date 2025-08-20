@@ -192,7 +192,7 @@ const AdminDashboard = () => {
   }
 
   return (
-    <Container className="mt-4">
+    <Container className="mt-4 admin-container">
       <h2 className="mb-4">Panel de Administración</h2>
       
       {metrics.loading ? (

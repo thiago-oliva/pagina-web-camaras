@@ -33,27 +33,9 @@ const Register = () => {
         dni: formData.dni
       });
       
-      // Mensaje de éxito con formato mejorado
       navigate('/login', { 
         state: { 
-          success: (
-            <div className="text-center">
-              <h4 className="text-success mb-3">
-                <i className="fas fa-check-circle me-2"></i>
-                ¡Registro exitoso!
-              </h4>
-              <p className="mb-2">
-                Hemos enviado un enlace de confirmación a:
-              </p>
-              <p className="fw-bold mb-3">{formData.email}</p>
-              <p className="mb-1">
-                Por favor revisa tu bandeja de entrada y haz clic en el enlace para activar tu cuenta.
-              </p>
-              <p className="small text-muted mt-3">
-                ¿No ves el email? Revisa tu carpeta de spam o solicita otro enlace.
-              </p>
-            </div>
-          )
+          success: '¡Registro exitoso! Revisa tu email para confirmar tu cuenta.' 
         },
         replace: true
       });
@@ -65,7 +47,7 @@ const Register = () => {
   };
 
   return (
-    <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: '80vh' }}>
+    <Container className="auth-container">
       <Card className="w-100" style={{ maxWidth: '600px' }}>
         <Card.Body>
           <h2 className="text-center mb-4">Registro de Usuario</h2>
